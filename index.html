@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NABD — Scientific References</title>
+<style>
+  :root{
+    --bg:#0A1917; --deep:#071310; --card:#122B26; --edge:#1D3E37;
+    --text:#E9E5D8; --soft:#B8C8C2; --dim:#7C918B;
+    --amber:#E0A458; --sage:#8FBF9F;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(1100px 620px at 82% -12%, rgba(224,164,88,.13), transparent 62%),
+      radial-gradient(820px 520px at 6% 4%, rgba(47,191,159,.09), transparent 58%),
+      linear-gradient(176deg, var(--deep), var(--bg) 48%, #081714);
+    background-attachment:fixed;
+    color:var(--text);
+    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.55; font-size:17px;
+    padding:0 1.15rem 3rem;
+  }
+  .wrap{ max-width:43rem; margin:0 auto; }
+
+  /* ------------------------------------------------------------ header */
+  header{ padding:3.1rem 0 2.1rem; }
+  .mark{
+    font-size:2.55rem; font-weight:800; letter-spacing:.34em;
+    color:var(--text); line-height:1; text-indent:.34em;
+  }
+  .rule{
+    width:3.1rem; height:3px; background:var(--amber);
+    border-radius:2px; margin:1.15rem 0 1.05rem;
+  }
+  header h1{
+    font-size:1.12rem; font-weight:600; color:var(--sage);
+    letter-spacing:.015em;
+  }
+  header p{
+    margin-top:.42rem; font-size:.93rem; color:var(--dim); max-width:32rem;
+  }
+
+  /* -------------------------------------------------------- references */
+  ol{ list-style:none; display:flex; flex-direction:column; gap:.9rem; }
+
+  li{
+    position:relative; background:var(--card);
+    border:1px solid var(--edge); border-radius:12px;
+    padding:1.25rem 1.3rem 1.2rem 3.55rem;
+    transition:border-color .18s ease, transform .18s ease;
+  }
+  li:hover{ border-color:rgba(224,164,88,.5); transform:translateY(-1px); }
+
+  .num{
+    position:absolute; left:1.15rem; top:1.2rem;
+    width:1.7rem; height:1.7rem; border-radius:50%;
+    background:rgba(224,164,88,.13); border:1px solid rgba(224,164,88,.42);
+    color:var(--amber); font-size:.84rem; font-weight:800;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .au{ font-size:.87rem; font-weight:700; color:var(--sage);
+       letter-spacing:.015em; }
+  .ti{ display:block; margin:.34rem 0 .5rem; font-size:1.045rem;
+       font-weight:600; color:var(--text); line-height:1.4; }
+  .ve{ display:block; font-size:.84rem; color:var(--dim); }
+
+  a{
+    display:inline-block; margin-top:.72rem;
+    font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;
+    font-size:.78rem; color:var(--amber); text-decoration:none;
+    background:rgba(224,164,88,.09); border:1px solid rgba(224,164,88,.26);
+    border-radius:7px; padding:.36rem .62rem;
+    overflow-wrap:anywhere; transition:background .18s ease;
+  }
+  a:hover{ background:rgba(224,164,88,.19); }
+
+  /* ------------------------------------------------------------ footer */
+  footer{
+    margin-top:2.4rem; padding-top:1.25rem;
+    border-top:1px solid var(--edge);
+    display:flex; justify-content:space-between; gap:.8rem; flex-wrap:wrap;
+    font-size:.79rem; color:var(--dim);
+  }
+  footer b{ color:var(--soft); font-weight:600; }
+
+  @media (max-width:400px){
+    body{ font-size:16px; }
+    .mark{ font-size:2rem; letter-spacing:.26em; text-indent:.26em; }
+    li{ padding:1.15rem 1.05rem 1.1rem 3.2rem; }
+    .num{ left:.95rem; }
+  }
+
+  /* -------------------------------- printing: light, so it is legible */
+  @media print{
+    @page{ size:A4 portrait; margin:16mm; }
+    body{ background:#fff; color:#12201D; font-size:10.5pt; padding:0; }
+    header{ padding:0 0 1.2rem; }
+    .mark,.ti{ color:#12201D; }
+    header h1{ color:#14403C; }
+    li{ background:#fff; border:1px solid #CFCABA; break-inside:avoid; }
+    li:hover{ transform:none; }
+    .au{ color:#14403C; }
+    .num{ background:#EFEADA; border-color:#C9A06A; color:#9A5A16; }
+    a{ background:none; border:0; padding:0; color:#9A5A16; }
+    .ve,footer{ color:#5E6E6A; }
+  }
+</style>
+
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="mark">NABD</div>
+    <div class="rule"></div>
+    <h1>Scientific References</h1>
+    <p>Works cited in the NABD scientific poster — through-barrier detection
+       of people and their vital signs.</p>
+  </header>
+
+  <ol>
+    <li>
+      <div class="num">1</div>
+      <span class="au">Katabi, D.</span>
+      <span class="ti">A new way to monitor vital signs (that can see through walls)</span>
+      <span class="ve">TED2018 · 2018</span>
+      <a href="https://www.ted.com/talks/dina_katabi_a_new_way_to_monitor_vital_signs_that_can_see_through_walls">ted.com/talks/dina_katabi</a>
+    </li>
+
+    <li>
+      <div class="num">2</div>
+      <span class="au">NASA JPL &amp; U.S. Department of Homeland Security</span>
+      <span class="ti">FINDER — Finding Individuals for Disaster and Emergency Response</span>
+      <span class="ve">Nepal earthquake deployment · 2015</span>
+      <a href="https://www.jpl.nasa.gov/news/finder-search-and-rescue-technology-helped-save-lives-in-nepal/">jpl.nasa.gov/news/finder-search-and-rescue</a>
+    </li>
+
+    <li>
+      <div class="num">3</div>
+      <span class="au">He, M., Nian, Y., Xu, L., Qiao, L., Wang, W.</span>
+      <span class="ti">Adaptive Separation of Respiratory and Heartbeat Signals among Multiple People Based on Empirical Wavelet Transform Using UWB Radar</span>
+      <span class="ve">Sensors 20(17):4913 · 2020 · doi:10.3390/s20174913</span>
+      <a href="https://www.mdpi.com/1424-8220/20/17/4913">mdpi.com/1424-8220/20/17/4913</a>
+    </li>
+
+    <li>
+      <div class="num">4</div>
+      <span class="au">Lei, G., Cheng, W., Yin, X., Wu, Y.</span>
+      <span class="ti">An innovative approach for FMCW radar vital sign monitoring with removal of respiratory harmonics</span>
+      <span class="ve">Digital Signal Processing 157:104911 · 2025 · doi:10.1016/j.dsp.2024.104911</span>
+      <a href="https://www.sciencedirect.com/science/article/abs/pii/S1051200424005359">sciencedirect.com/…/S1051200424005359</a>
+    </li>
+  </ol>
+
+  <footer>
+    <span><b>NABD</b> — Through-Barrier Vital-Sign Radar</span>
+    <span>SAIF 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
