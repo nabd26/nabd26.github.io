@@ -1,165 +1,327 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
+<head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NABD — Scientific References</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>نبض · المراجع العلمية | NABD · References</title>
+<meta name="description" content="NABD (نبض) - scientific references / المراجع العلمية">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0A1917; --deep:#071310; --card:#122B26; --edge:#1D3E37;
-    --text:#E9E5D8; --soft:#B8C8C2; --dim:#7C918B;
-    --amber:#E0A458; --sage:#8FBF9F;
+:root {
+  --bg: #F4F1E8; --paper: #FFFDF7; --ink: #13302C; --ink-2: #3F5752; --muted: #6E827C;
+  --line: #E2DCCB; --teal: #1F7A68; --teal-soft: #E0EFEA; --scrim: rgba(10, 24, 21, .55);
+  --shadow: 0 1px 2px rgba(19, 48, 44, .06), 0 6px 18px rgba(19, 48, 44, .07);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1715; --paper: #152420; --ink: #E6EFEC; --ink-2: #BCCDC8; --muted: #8AA39D;
+    --line: #26392F; --teal: #4DBBA2; --teal-soft: #183B34; --scrim: rgba(0, 0, 0, .65);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .25);
   }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ -webkit-text-size-adjust:100%; }
-  body{
-    min-height:100vh;
-    background:
-      radial-gradient(1100px 620px at 82% -12%, rgba(224,164,88,.13), transparent 62%),
-      radial-gradient(820px 520px at 6% 4%, rgba(47,191,159,.09), transparent 58%),
-      linear-gradient(176deg, var(--deep), var(--bg) 48%, #081714);
-    background-attachment:fixed;
-    color:var(--text);
-    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
-    line-height:1.55; font-size:17px;
-    padding:0 1.15rem 3rem;
-  }
-  .wrap{ max-width:43rem; margin:0 auto; }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1715; --paper: #152420; --ink: #E6EFEC; --ink-2: #BCCDC8; --muted: #8AA39D;
+  --line: #26392F; --teal: #4DBBA2; --teal-soft: #183B34; --scrim: rgba(0, 0, 0, .65);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .25);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.7 "IBM Plex Sans Arabic", "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif;
+}
+html[lang="en"] body { font-family: "IBM Plex Sans", "IBM Plex Sans Arabic", "Segoe UI", sans-serif; }
+html[lang="ar"] .en, html[lang="en"] .ar { display: none !important; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 16px 40px; }
 
-  /* ------------------------------------------------------------ header */
-  header{ padding:3.1rem 0 2.1rem; }
-  .mark{
-    font-size:2.55rem; font-weight:800; letter-spacing:.34em;
-    color:var(--text); line-height:1; text-indent:.34em;
-  }
-  .rule{
-    width:3.1rem; height:3px; background:var(--amber);
-    border-radius:2px; margin:1.15rem 0 1.05rem;
-  }
-  header h1{
-    font-size:1.12rem; font-weight:600; color:var(--sage);
-    letter-spacing:.015em;
-  }
-  header p{
-    margin-top:.42rem; font-size:.93rem; color:var(--dim); max-width:32rem;
-  }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 0 6px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
+.pulse { width: 34px; height: 34px; border-radius: 10px; background: var(--teal); display: grid; place-items: center; flex: none; }
+.pulse svg { width: 22px; height: 22px; }
+.lang {
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px;
+  padding: 8px 16px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: var(--shadow);
+}
+.lang:hover { border-color: var(--teal); }
+h1 { font-size: clamp(28px, 6vw, 38px); line-height: 1.25; margin: 26px 0 4px; }
 
-  /* -------------------------------------------------------- references */
-  ol{ list-style:none; display:flex; flex-direction:column; gap:.9rem; }
+section { margin-top: 30px; }
+h2 { font-size: 15px; font-weight: 700; color: var(--teal); margin: 0 0 10px; letter-spacing: .01em; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 640px) { .grid { grid-template-columns: minmax(0, 1fr); } }
 
-  li{
-    position:relative; background:var(--card);
-    border:1px solid var(--edge); border-radius:12px;
-    padding:1.25rem 1.3rem 1.2rem 3.55rem;
-    transition:border-color .18s ease, transform .18s ease;
-  }
-  li:hover{ border-color:rgba(224,164,88,.5); transform:translateY(-1px); }
+.ref {
+  display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: start;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 14px;
+  box-shadow: var(--shadow); color: inherit; font: inherit; cursor: pointer;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.ref:hover { border-color: var(--teal); transform: translateY(-1px); }
+.ref:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+.n {
+  flex: none; width: 30px; height: 30px; border-radius: 9px; background: var(--ink); color: var(--paper);
+  display: grid; place-items: center; font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums;
+}
+.ref .body { display: block; min-width: 0; flex: 1; }
+.ref .t {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  font-weight: 600; font-size: 15px; line-height: 1.45; direction: ltr; text-align: left;
+}
+.ref .t.ar { direction: rtl; text-align: right; }
+.dlg .t.ta { direction: rtl; text-align: right; }
+.dlg .orig { margin: 2px 0 6px; font-size: 13.5px; color: var(--ink-2); }
+.dlg .orig b { display: block; font-size: 12px; color: var(--muted); }
+.dlg .orig span { display: block; direction: ltr; text-align: left; font-weight: 600; }
+.ref .c { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; direction: ltr; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ref .go { flex: none; color: var(--muted); margin-top: 4px; }
+html[lang="ar"] .ref .go svg { transform: scaleX(-1); }
 
-  .num{
-    position:absolute; left:1.15rem; top:1.2rem;
-    width:1.7rem; height:1.7rem; border-radius:50%;
-    background:rgba(224,164,88,.13); border:1px solid rgba(224,164,88,.42);
-    color:var(--amber); font-size:.84rem; font-weight:800;
-    display:flex; align-items:center; justify-content:center;
-  }
+/* details window */
+dialog {
+  border: 0; padding: 0; background: var(--paper); color: var(--ink); border-radius: 18px;
+  width: min(640px, calc(100vw - 32px)); max-height: min(86vh, 760px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .3);
+}
+dialog::backdrop { background: var(--scrim); }
+@media (max-width: 640px) {
+  dialog { width: 100vw; max-width: 100vw; margin: auto 0 0 0; border-radius: 18px 18px 0 0; max-height: 88vh; }
+}
+.dlg { display: flex; flex-direction: column; max-height: inherit; }
+.dlg-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px 0; }
+.x {
+  width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line); background: transparent;
+  color: var(--ink); font-size: 22px; line-height: 1; cursor: pointer;
+}
+.dlg-body { padding: 8px 18px 20px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.dlg .t { font-weight: 700; font-size: 17px; line-height: 1.45; direction: ltr; text-align: left; margin: 4px 0 6px; }
+.dlg .cite { font-size: 13px; color: var(--muted); direction: ltr; text-align: left; line-height: 1.55; }
+.dlg .cite i { font-style: italic; }
+.blk { margin-top: 14px; }
+.blk b { display: block; font-size: 13px; color: var(--muted); margin-bottom: 2px; }
+.blk.key { background: var(--teal-soft); border-radius: 12px; padding: 10px 12px; }
+.blk.key b { color: var(--teal); }
+.blk ul { margin: 6px 0 0; padding-inline-start: 18px; }
+.blk li { margin: 6px 0; }
+.blk li b { display: inline; font-size: inherit; color: var(--ink); margin: 0; }
+.open {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 9px 14px; border-radius: 10px;
+  background: var(--teal); color: #fff; text-decoration: none; font-weight: 600; font-size: 14px;
+}
 
-  .au{ font-size:.87rem; font-weight:700; color:var(--sage);
-       letter-spacing:.015em; }
-  .ti{ display:block; margin:.34rem 0 .5rem; font-size:1.045rem;
-       font-weight:600; color:var(--text); line-height:1.4; }
-  .ve{ display:block; font-size:.84rem; color:var(--dim); }
-
-  a{
-    display:inline-block; margin-top:.72rem;
-    font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;
-    font-size:.78rem; color:var(--amber); text-decoration:none;
-    background:rgba(224,164,88,.09); border:1px solid rgba(224,164,88,.26);
-    border-radius:7px; padding:.36rem .62rem;
-    overflow-wrap:anywhere; transition:background .18s ease;
-  }
-  a:hover{ background:rgba(224,164,88,.19); }
-
-  /* ------------------------------------------------------------ footer */
-  footer{
-    margin-top:2.4rem; padding-top:1.25rem;
-    border-top:1px solid var(--edge);
-    display:flex; justify-content:space-between; gap:.8rem; flex-wrap:wrap;
-    font-size:.79rem; color:var(--dim);
-  }
-  footer b{ color:var(--soft); font-weight:600; }
-
-  @media (max-width:400px){
-    body{ font-size:16px; }
-    .mark{ font-size:2rem; letter-spacing:.26em; text-indent:.26em; }
-    li{ padding:1.15rem 1.05rem 1.1rem 3.2rem; }
-    .num{ left:.95rem; }
-  }
-
-  /* -------------------------------- printing: light, so it is legible */
-  @media print{
-    @page{ size:A4 portrait; margin:16mm; }
-    body{ background:#fff; color:#12201D; font-size:10.5pt; padding:0; }
-    header{ padding:0 0 1.2rem; }
-    .mark,.ti{ color:#12201D; }
-    header h1{ color:#14403C; }
-    li{ background:#fff; border:1px solid #CFCABA; break-inside:avoid; }
-    li:hover{ transform:none; }
-    .au{ color:#14403C; }
-    .num{ background:#EFEADA; border-color:#C9A06A; color:#9A5A16; }
-    a{ background:none; border:0; padding:0; color:#9A5A16; }
-    .ve,footer{ color:#5E6E6A; }
-  }
+footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; text-align: center; }
 </style>
-
+</head>
 <body>
 <div class="wrap">
+  <div class="bar">
+    <div class="brand">
+      <div class="pulse" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2.5-6 4 12 3-9 2 3H22"/></svg></div>
+      <span class="ar">نبض</span><span class="en">NABD</span>
+    </div>
+    <button class="lang" id="lang" type="button" aria-label="English / العربية"><span class="ar">English</span><span class="en">العربية</span></button>
+  </div>
 
-  <header>
-    <div class="mark">NABD</div>
-    <div class="rule"></div>
-    <h1>Scientific References</h1>
-    <p>Prior work behind NABD — through-barrier detection of people and their
-       vital signs.</p>
-  </header>
+  <h1><span class="ar">المراجع العلمية</span><span class="en">References</span></h1>
 
-  <ol>
-    <li>
-      <div class="num">1</div>
-      <span class="au">Katabi, D.</span>
-      <span class="ti">A new way to monitor vital signs (that can see through walls)</span>
-      <span class="ve">TED Conference · 2018</span>
-      <a href="https://www.ted.com/talks/dina_katabi_a_new_way_to_monitor_vital_signs_that_can_see_through_walls">ted.com/talks/dina_katabi</a>
-    </li>
-
-    <li>
-      <div class="num">2</div>
-      <span class="au">NASA JPL &amp; DHS Science and Technology Directorate</span>
-      <span class="ti">FINDER Search and Rescue Technology Helped Save Lives in Nepal</span>
-      <span class="ve">Finding Individuals for Disaster and Emergency Response · NASA JPL news · 7 May 2015</span>
-      <a href="https://www.jpl.nasa.gov/news/finder-search-and-rescue-technology-helped-save-lives-in-nepal/">jpl.nasa.gov/news/finder-search-and-rescue</a>
-    </li>
-
-    <li>
-      <div class="num">3</div>
-      <span class="au">He, M., Nian, Y., Xu, L., Qiao, L., Wang, W.</span>
-      <span class="ti">Adaptive Separation of Respiratory and Heartbeat Signals among Multiple People Based on Empirical Wavelet Transform Using UWB Radar</span>
-      <span class="ve">Sensors 20(17):4913 · 2020 · doi:10.3390/s20174913</span>
-      <a href="https://www.mdpi.com/1424-8220/20/17/4913">mdpi.com/1424-8220/20/17/4913</a>
-    </li>
-
-    <li>
-      <div class="num">4</div>
-      <span class="au">Lei, G., Cheng, W., Yin, X., Wu, Y.</span>
-      <span class="ti">An innovative approach for FMCW radar vital sign monitoring with removal of respiratory harmonics</span>
-      <span class="ve">Digital Signal Processing 157:104911 · 2025 · doi:10.1016/j.dsp.2024.104911</span>
-      <a href="https://www.sciencedirect.com/science/article/abs/pii/S1051200424005359">sciencedirect.com/…/S1051200424005359</a>
-    </li>
-  </ol>
+  <div id="list"></div>
 
   <footer>
-    <span><b>NABD</b> — Through-Barrier Vital-Sign Radar</span>
-    <span>SAIF 2026</span>
+    <span><span class="ar">نبض · مسابقة سيف 2026</span><span class="en">NABD · SAIF 2026</span></span>
   </footer>
-
 </div>
+
+<dialog id="dlg" aria-labelledby="dlg-t">
+  <div class="dlg">
+    <div class="dlg-head"><div class="n" id="dlg-n"></div><button class="x" id="dlg-x" type="button" aria-label="Close / إغلاق">&times;</button></div>
+    <div class="dlg-body" id="dlg-body"></div>
+  </div>
+</dialog>
+
+<script>
+var SECTIONS = [
+  { ar: "بيانات الاختبار", en: "Test data", refs: [1, 2] },
+  { ar: "بيانات تدريب الشبكة العصبية", en: "Neural-network training data", refs: [3, 4, 5, 6] },
+  { ar: "أعمال سابقة", en: "Prior work", refs: [7, 8, 9, 10] },
+  { ar: "الأساس النظري", en: "Theory", refs: [11] },
+  { ar: "أهمية المجال", en: "Why it matters", refs: [12, 13] }
+];
+var USED = { ar: "ما استخدمه نبض", en: "What NABD used" };
+var DIFF = { ar: "الفرق عن نبض", en: "How NABD differs" };
+var ROLE = { ar: "دوره في نبض", en: "Its role in NABD" };
+var LINK = { ar: "صلته بنبض", en: "Link to NABD" };
+var REFS = {
+  1: { t: "Emergency Response Person Localization and Vital Sign Estimation Using a Semi-Autonomous Robot Mounted SFCW Radar",
+       a: "تحديد مواقع الأشخاص وتقدير علاماتهم الحيوية في الطوارئ برادار SFCW على روبوت شبه ذاتي",
+       s: "Schroth et al. · IEEE Trans. Biomed. Eng. · 2024",
+       c: 'C. A. Schroth <i>et al.</i>, "Emergency response person localization and vital sign estimation using a semi-autonomous robot mounted SFCW radar," <i>IEEE Trans. Biomed. Eng.</i>, vol. 71, no. 6, pp. 1756–1769, 2024.',
+       u: "https://doi.org/10.1109/TBME.2024.3350789", k: USED,
+       what: { ar: "الورقة التي نشرت بيانات الاختبار: رادار على روبوت يحدّد مواقع الأشخاص ويقدّر تنفّسهم خلف الحواجز.",
+               en: "The paper that published the test data: a robot-mounted radar that locates people and estimates their breathing behind obstacles." },
+       rel:  { ar: "وصف طريقة التسجيل وترتيب الهوائيات. وتذكر الورقة أن تقدير نبض القلب بالطرق المباشرة «لم يبدُ ممكنًا»، وهذه هي المشكلة التي يعمل عليها نبض.",
+               en: "How the data was recorded and the antenna layout. The paper reports that estimating heart rate with straightforward approaches \"did not seem possible\"; that is the problem NABD works on." } },
+  2: { t: "Multi-Person Localization and Vital Sign Estimation Radar Dataset",
+       a: "مجموعة بيانات رادار لتحديد مواقع عدّة أشخاص وتقدير علاماتهم الحيوية",
+       s: "Schroth et al. · IEEE DataPort · 2023",
+       c: 'C. A. Schroth <i>et al.</i>, "Multi-person localization and vital sign estimation radar dataset," IEEE DataPort, 2023.',
+       u: "https://doi.org/10.21227/4bzd-jm32", k: USED,
+       what: { ar: "تسجيلات رادار لعدد يصل إلى خمسة أشخاص في الغرفة، في مساحة مفتوحة وخلف باب خشبي وخلف جدار من الطوب الإسمنتي، مع تخطيط قلب وحزام تنفّس لكل شخص.",
+               en: "Radar recordings of up to five people in a room, in open space, behind a wooden door and behind a cinder-block wall, with an ECG and a respiration belt for each person." },
+       rel:  { ar: "جميع أرقام نبض محسوبة على هذه التسجيلات. وتُستخدم مراجعها الطبية للتدريب والتقييم فقط، ولا يطّلع عليها النظام أثناء القراءة.",
+               en: "Every NABD number is measured on these recordings. Their medical references are used for training and scoring only; the system never sees them while reading." } },
+  3: { t: "Extensive Age-Balanced and Subject-Varied mmWave Radar Dataset of Referenced Records for Vital Signs",
+       a: "مجموعة بيانات رادار بالموجات المليمترية لعلامات حيوية موثّقة، متوازنة الأعمار ومتنوّعة المشاركين",
+       s: "Parralejo et al. · Zenodo · 2026",
+       c: 'F. Parralejo <i>et al.</i>, "Extensive age-balanced and subject-varied mmWave radar dataset of referenced records for vital signs," Zenodo, 2026.',
+       u: "https://doi.org/10.5281/zenodo.18599983", k: USED,
+       what: { ar: "رادار بتردد 60 جيجاهرتز، و110 مشاركين من أعمار مختلفة، مع تخطيط قلب.",
+               en: "A 60 GHz radar and 110 participants of different ages, with ECG." },
+       rel:  { ar: "جزء من بيانات تدريب الشبكة العصبية، ومعدّلات نبض الراحة لدى المشاركين لتحديد المدى الطبيعي للنبض.",
+               en: "Part of the neural network's training data, and the participants' resting heart rates, which set the normal range of a human heart rate." } },
+  4: { t: "A dataset of clinically recorded radar vital signs with synchronised reference sensor signals",
+       a: "مجموعة بيانات لعلامات حيوية سُجّلت بالرادار في بيئة سريرية، مع إشارات حسّاسات مرجعية متزامنة",
+       s: "Schellenberger et al. · Sci. Data · 2020",
+       c: 'S. Schellenberger <i>et al.</i>, "A dataset of clinically recorded radar vital signs with synchronised reference sensor signals," <i>Sci. Data</i>, vol. 7, art. 291, 2020.',
+       u: "https://doi.org/10.1038/s41597-020-00629-5", k: USED,
+       what: { ar: "تسجيلات رادار لثلاثين شخصًا في بيئة سريرية، مع حسّاسات مرجعية متزامنة.",
+               en: "Radar recordings of thirty people in a clinical setting, with synchronised reference sensors." },
+       rel:  { ar: "جزء من بيانات تدريب الشبكة العصبية.", en: "Part of the neural network's training data." } },
+  5: { t: "A dataset of radar-recorded heart sounds and vital signs including synchronised reference sensor signals",
+       a: "مجموعة بيانات لأصوات القلب والعلامات الحيوية مسجّلة بالرادار، مع إشارات حسّاسات مرجعية متزامنة",
+       s: "Shi et al. · Sci. Data · 2020",
+       c: 'K. Shi <i>et al.</i>, "A dataset of radar-recorded heart sounds and vital signs including synchronised reference sensor signals," <i>Sci. Data</i>, vol. 7, art. 50, 2020.',
+       u: "https://doi.org/10.1038/s41597-020-0390-1", k: USED,
+       what: { ar: "أصوات القلب والعلامات الحيوية لأحد عشر شخصًا، مسجّلة بالرادار مع حسّاسات مرجعية.",
+               en: "Heart sounds and vital signs of eleven people, recorded by radar with reference sensors." },
+       rel:  { ar: "جزء من بيانات تدريب الشبكة العصبية.", en: "Part of the neural network's training data." } },
+  6: { t: "Radar Recorded Child Vital Sign Public Dataset and Deep Learning-Based Age Group Classification Framework for Vehicular Application",
+       a: "مجموعة بيانات عامة لعلامات الأطفال الحيوية مسجّلة بالرادار، وإطار تعلّم عميق لتصنيف الفئات العمرية في المركبات",
+       s: "Yoo et al. · Sensors · 2021",
+       c: 'S. Yoo <i>et al.</i>, "Radar recorded child vital sign public dataset and deep learning-based age group classification framework for vehicular application," <i>Sensors</i>, vol. 21, no. 7, art. 2412, 2021.',
+       u: "https://doi.org/10.3390/s21072412", k: USED,
+       what: { ar: "العلامات الحيوية لخمسين طفلًا، مسجّلة بالرادار.", en: "Vital signs of fifty children, recorded by radar." },
+       rel:  { ar: "جزء من بيانات تدريب الشبكة العصبية. ونبض الأطفال أسرع من نبض البالغين، فيتّسع مدى ما تتعلّمه الشبكة.",
+               en: "Part of the neural network's training data. Children's hearts beat faster than adults', which widens the range the network learns." } },
+  7: { t: "Through the wall human heart beat detection using single channel CW radar",
+       a: "كشف نبض قلب الإنسان عبر الجدار برادار موجة مستمرة بقناة واحدة",
+       s: "Pramanik & Islam · Front. Physiol. · 2024",
+       c: 'S. K. Pramanik and S. M. M. Islam, "Through the wall human heart beat detection using single channel CW radar," <i>Front. Physiol.</i>, vol. 15, art. 1344221, 2024.',
+       u: "https://doi.org/10.3389/fphys.2024.1344221", k: DIFF,
+       what: { ar: "رادار بقناة واحدة، في تجارب أجراها الباحثون بأنفسهم: شخص أو شخصان، على مسافة لا تتجاوز مترًا واحدًا من الرادار، خلف جدار طوب بسماكة 10 سم أو حاجز خشبي بسماكة 5 سم.",
+               en: "A single-channel radar, in experiments the authors ran themselves: one or two people, no more than one metre from the radar, behind a 10 cm brick wall or a 5 cm wooden barrier." },
+       rel:  { ar: "<ul><li><b>المسافة:</b> تذكر الورقة أن الكشف دقيق حتى متر واحد فقط، وأن ما بعده تحدٍّ. وفي بيانات نبض، الأشخاص على بعد 1 إلى 4 أمتار.</li><li><b>الجدار:</b> جدار نبض من الطوب الإسمنتي المجوّف بسماكة 17 سم، وجدارهم من الطوب بسماكة 10 سم.</li><li><b>عدد الأشخاص:</b> تفصل طريقتهم شخصين فقط، وتترك ما زاد عملًا مستقبليًا. وفي بيانات نبض حتى خمسة أشخاص في الغرفة، ونبض يوجّه هوائياته نحو كل شخص ويُسكت جيرانه.</li><li><b>الاختبار:</b> سجّلوا بياناتهم بأنفسهم. ونبض مختبَر على تسجيلات منشورة من مختبر آخر، وعلى مشاهد لم يتدرّب عليها. ونسبة 95% عندهم تقيس، بحسب جداولهم، قرب القراءة من التخطيط، لا نسبة القراءات الصحيحة ضمن ±5 نبضات كما في نبض، فلا يُقارن الرقمان مباشرة.</li></ul>",
+               en: "<ul><li><b>Distance:</b> The paper states detection is accurate up to one metre only, with challenges beyond. In NABD's data, people are 1 to 4 metres away.</li><li><b>Wall:</b> NABD's wall is 17 cm of hollow cinder block; theirs is 10 cm of brick.</li><li><b>People:</b> Their method separates two people only and leaves more for future work. NABD's data has up to five people in the room, and NABD steers its antennas at each person and silences the neighbours.</li><li><b>Testing:</b> They recorded their own data. NABD is tested on recordings published by another lab, on scenes it never trained on. Their 95% measures, judging by their tables, how close a reading is to the ECG, not the share of readings within ±5 bpm as NABD reports, so the two numbers are not directly comparable.</li></ul>" } },
+  8: { t: "Detection of Heart Rate through a Wall Using UWB Impulse Radar",
+       a: "قياس معدّل النبض عبر جدار برادار نبضي فائق عرض النطاق (UWB)",
+       s: "Cho & Park · J. Healthc. Eng. · 2018",
+       c: 'H.-S. Cho and Y.-J. Park, "Detection of heart rate through a wall using UWB impulse radar," <i>J. Healthc. Eng.</i>, vol. 2018, art. 4832605, 2018.',
+       u: "https://doi.org/10.1155/2018/4832605", k: DIFF,
+       what: { ar: "رادار نبضي فائق عرض النطاق (UWB) يقيس نبض شخص واحد جالس دون حركة، على بعد 15 سم خلف جدار من الطوب الطيني، والجدار على بعد 50 سم من الرادار. خمسة أشخاص، و80 قياسًا.",
+               en: "A UWB impulse radar measuring the heart rate of one person sitting still, 15 cm behind a clay-brick wall that stands 50 cm from the radar. Five people, 80 measurements." },
+       rel:  { ar: "<ul><li><b>المسافة:</b> تذكر الورقة أن الكشف دون تضخيم يحتاج مسافة لا تزيد على متر. ونبض يقرأ أشخاصًا على بعد 1 إلى 4 أمتار.</li><li><b>نوع الجدار:</b> تذكر الورقة أن الكشف فشل مع الجدران المجوّفة أو الموصلة للكهرباء. وجدار نبض من الطوب الإسمنتي المجوّف.</li><li><b>عدد الأشخاص:</b> تجاربهم لشخص واحد. ونبض يعمل في غرف فيها عدّة أشخاص ويفصل بينهم.</li><li><b>متى يتكلم:</b> لا تصف الورقة أي درجة ثقة. ونبض يعطي كل قراءة درجة ثقة، ويمتنع عن الرقم إذا لم يكن واثقًا.</li></ul>",
+               en: "<ul><li><b>Distance:</b> The paper states that without amplification detection needs a distance of one metre or less. NABD reads people 1 to 4 metres away.</li><li><b>Wall type:</b> The paper reports detection failed with walls that have cavities or conduct electricity. NABD's wall is hollow cinder block.</li><li><b>People:</b> Their tests are of one person. NABD works in rooms with several people and separates them.</li><li><b>When to speak:</b> The paper describes no confidence score. NABD gives every reading a confidence and holds back the number when it is not sure.</li></ul>" } },
+  9: { t: "Adaptive Separation of Respiratory and Heartbeat Signals among Multiple People Based on Empirical Wavelet Transform Using UWB Radar",
+       a: "فصل تكيّفي لإشارات التنفّس والنبض بين عدّة أشخاص بتحويل المويجات التجريبي، برادار UWB",
+       s: "He et al. · Sensors · 2020",
+       c: 'M. He <i>et al.</i>, "Adaptive separation of respiratory and heartbeat signals among multiple people based on empirical wavelet transform using UWB radar," <i>Sensors</i>, vol. 20, no. 17, art. 4913, 2020.',
+       u: "https://doi.org/10.3390/s20174913", k: DIFF,
+       what: { ar: "يفصل تنفّس ونبض ثلاثة متطوعين مستلقين في غرفة، على بعد 1.6 إلى 2.5 متر، برادار SFCW. ولا تذكر الورقة أي حاجز بين الرادار والأشخاص.",
+               en: "Separates the breathing and heartbeat of three volunteers lying in a room, 1.6 to 2.5 metres away, with an SFCW radar. The paper mentions no barrier between the radar and the people." },
+       rel:  { ar: "<ul><li><b>الحاجز:</b> نبض مختبَر خلف باب خشبي وخلف جدار من الطوب الإسمنتي، لا في غرفة مفتوحة فقط.</li><li><b>الحجم:</b> ثلاثة متطوعين وعشرة قياسات. ونبض مختبَر على 168 تسجيل شخص من بيانات منشورة.</li><li><b>طريقة الفصل:</b> يفصلون الأشخاص بالمسافة ثم يحلّلون إشارة كل واحد. ونبض يفصلهم بالمسافة والاتجاه معًا، فيوجّه الهوائيات نحو كل شخص ويُسكت جيرانه.</li><li><b>متى يتكلم:</b> طريقتهم تعطي رقمًا دائمًا. ونبض يعطي درجة ثقة، ويمتنع إذا لم يكن واثقًا.</li></ul>",
+               en: "<ul><li><b>Barrier:</b> NABD is tested behind a wooden door and behind a cinder-block wall, not only in an open room.</li><li><b>Scale:</b> Three volunteers and ten measurements. NABD is tested on 168 person-recordings of published data.</li><li><b>Separation:</b> They separate people by distance, then analyse each one's signal. NABD separates them by distance and direction together, steering the antennas at each person and silencing the neighbours.</li><li><b>When to speak:</b> Their method always outputs a number. NABD gives a confidence and holds back when it is not sure.</li></ul>" } },
+  10: { t: "An innovative approach for FMCW radar vital sign monitoring with removal of respiratory harmonics",
+       a: "طريقة مبتكرة لمراقبة العلامات الحيوية برادار FMCW مع إزالة توافقيات التنفّس",
+       s: "Lei et al. · Digit. Signal Process. · 2025",
+       c: 'G. Lei <i>et al.</i>, "An innovative approach for FMCW radar vital sign monitoring with removal of respiratory harmonics," <i>Digit. Signal Process.</i>, vol. 157, art. 104911, 2025.',
+       u: "https://doi.org/10.1016/j.dsp.2024.104911", k: DIFF,
+       what: { ar: "توافقيات التنفّس تقع في نطاق النبض، فيكشفها بتحليل الطيف المفرد (SSA) ويزيلها، ثم يفكّك الإشارة بطريقة VMD محسّنة، برادار FMCW.",
+               en: "Breathing harmonics fall inside the heart band, so it finds them with singular spectrum analysis (SSA), removes them, then decomposes the signal with an improved VMD, using an FMCW radar." },
+       rel:  { ar: "<ul><li><b>الحواجز:</b> لا يذكر ملخص الورقة أي جدار أو حاجز. ونبض يواجه توافقيات التنفّس خلف باب وجدار، حيث الإشارة أضعف بنحو 12 ديسيبل.</li><li><b>لا يكتفي بالإزالة:</b> يطرح نبض التنفّس وتوافقياته، ثم يحسب لكل رقم مرشّح بُعده عن توافقيات التنفّس، ويتعلّم الحَكَم منه متى يكون الرقم توافقية لا نبضًا.</li><li><b>متى يتكلم:</b> يعطي نبض كل قراءة درجة ثقة، ويمتنع عن الرقم إذا لم يكن واثقًا.</li></ul>",
+               en: "<ul><li><b>Barriers:</b> The paper's abstract mentions no wall or barrier. NABD meets breathing harmonics behind a door and a wall, where the signal is about 12 dB weaker.</li><li><b>Beyond removal:</b> NABD subtracts the breathing and its harmonics, then measures how far each candidate rate lies from a breathing harmonic, and the judge learns from it when a rate is a harmonic and not a heartbeat.</li><li><b>When to speak:</b> NABD gives every reading a confidence and holds back the number when it is not sure.</li></ul>" } },
+  11: { t: "Beamforming: A versatile approach to spatial filtering",
+       a: "توجيه الحزمة: نهج متعدّد الاستخدامات للترشيح المكاني",
+       s: "Van Veen & Buckley · IEEE ASSP Mag. · 1988",
+       c: 'B. D. Van Veen and K. M. Buckley, "Beamforming: A versatile approach to spatial filtering," <i>IEEE ASSP Mag.</i>, vol. 5, no. 2, pp. 4–24, 1988.',
+       u: "https://doi.org/10.1109/53.665", k: ROLE,
+       what: { ar: "المرجع الأساسي في توجيه الهوائيات: الاستماع إلى اتجاه واحد وإسكات الاتجاهات الأخرى.",
+               en: "The classic reference on beamforming: listening in one direction and silencing the others." },
+       rel:  { ar: "يطبّقه نبض لكل شخص: يوجّه الهوائيات نحوه ويُسكت جيرانه. وبذلك أصبحت قراءة التنفّس خلف الباب صحيحة في 9 من 9 مشاهد، دون أي تدريب.",
+               en: "NABD applies it to each person: it steers the antennas at them and silences the neighbours. With it, breathing behind the door is right in 9 of 9 scenes, without any training." } },
+  12: { t: "FINDER Search and Rescue Technology Helped Save Lives in Nepal",
+       a: "تقنية FINDER للبحث والإنقاذ ساعدت في إنقاذ أرواح في نيبال",
+       s: "NASA JPL · news release · 2015",
+       c: 'NASA Jet Propulsion Laboratory, "FINDER search and rescue technology helped save lives in Nepal," news release, May 7, 2015.',
+       u: "https://www.jpl.nasa.gov/news/finder-search-and-rescue-technology-helped-save-lives-in-nepal/", k: LINK,
+       what: { ar: "بعد زلزال نيبال عام 2015، ساعد رادار FINDER في العثور على أربعة رجال تحت نحو ثلاثة أمتار من الأنقاض، من نبضات قلوبهم.",
+               en: "After the 2015 Nepal earthquake, the FINDER radar helped find four men under about three metres of debris, from their heartbeats." },
+       rel:  { ar: "يبيّن أن قراءة النبض بالرادار تنقذ الأرواح في الكوارث، وهي الغاية التي صُمّم نبض من أجلها.",
+               en: "It shows that reading heartbeats by radar saves lives in disasters, the purpose NABD was designed for." } },
+  13: { t: "A new way to monitor vital signs (that can see through walls)",
+       a: "طريقة جديدة لمراقبة العلامات الحيوية (ترى عبر الجدران)",
+       s: "Katabi · TED2018 · 2018",
+       c: 'D. Katabi, "A new way to monitor vital signs (that can see through walls)," TED2018, Apr. 2018.',
+       u: "https://www.ted.com/talks/dina_katabi_a_new_way_to_monitor_vital_signs_that_can_see_through_walls", k: LINK,
+       what: { ar: "نظام يقرأ العلامات الحيوية من انعكاس إشارات لاسلكية تشبه الواي فاي، دون أجهزة يرتديها الشخص، حتى عبر الجدران.",
+               en: "A system that reads vital signs from Wi-Fi-like signals reflecting off people, with nothing worn, even through walls." },
+       rel:  { ar: "يبيّن أن للفكرة قيمة تتجاوز الإنقاذ، مثل المراقبة الصحية دون تلامس.",
+               en: "It shows the idea is worth more than rescue alone, for example health monitoring without contact." } }
+};
+
+function both(o) { return '<span class="ar">' + o.ar + '</span><span class="en">' + o.en + '</span>'; }
+var ARROW = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+
+var html = "";
+SECTIONS.forEach(function (sec) {
+  html += '<section><h2>' + both(sec) + '</h2><div class="grid">';
+  sec.refs.forEach(function (n) {
+    var r = REFS[n];
+    html += '<button class="ref" type="button" data-n="' + n + '"><span class="n">' + n + '</span>' +
+            '<span class="body"><span class="t ar">' + r.a + '</span><span class="t en">' + r.t + '</span><span class="c">' + r.s + '</span></span>' +
+            '<span class="go">' + ARROW + '</span></button>';
+  });
+  html += '</div></section>';
+});
+document.getElementById("list").innerHTML = html;
+
+var dlg = document.getElementById("dlg");
+function openRef(n) {
+  var r = REFS[n];
+  document.getElementById("dlg-n").textContent = n;
+  document.getElementById("dlg-body").innerHTML =
+    '<div class="t ar ta" id="dlg-t">' + r.a + '</div><div class="t en">' + r.t + '</div>' +
+    '<div class="orig ar"><b>العنوان الأصلي</b><span>' + r.t + '</span></div>' +
+    '<div class="cite">' + r.c + '</div>' +
+    '<div class="blk"><b>' + both({ ar: "المحتوى", en: "What it is" }) + '</b>' + both(r.what) + '</div>' +
+    '<div class="blk key"><b>' + both(r.k) + '</b>' + both(r.rel) + '</div>' +
+    '<a class="open" href="' + r.u + '" target="_blank" rel="noopener">' + both({ ar: "فتح المرجع", en: "Open the source" }) + ' ↗</a>';
+  if (typeof dlg.showModal === "function") { dlg.showModal(); } else { dlg.setAttribute("open", ""); }
+  document.getElementById("dlg-body").scrollTop = 0;
+}
+function closeDlg() { if (typeof dlg.close === "function") { dlg.close(); } else { dlg.removeAttribute("open"); } }
+document.getElementById("list").addEventListener("click", function (e) {
+  var b = e.target.closest(".ref");
+  if (b) { openRef(+b.getAttribute("data-n")); }
+});
+document.getElementById("dlg-x").addEventListener("click", closeDlg);
+dlg.addEventListener("click", function (e) { if (e.target === dlg) { closeDlg(); } });
+
+(function () {
+  var root = document.documentElement;
+  function set(lang) {
+    root.lang = lang;
+    root.dir = lang === "ar" ? "rtl" : "ltr";
+    try { localStorage.setItem("nabd-lang", lang); } catch (e) {}
+  }
+  var start = "ar";
+  try {
+    var q = new URLSearchParams(location.search).get("lang");
+    var saved = localStorage.getItem("nabd-lang");
+    if (q === "en" || q === "ar") { start = q; } else if (saved === "en" || saved === "ar") { start = saved; }
+  } catch (e) {}
+  set(start);
+  document.getElementById("lang").addEventListener("click", function () { set(root.lang === "ar" ? "en" : "ar"); });
+})();
+</script>
 </body>
 </html>
