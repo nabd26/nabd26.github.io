@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>خطة نبض · NABD plan</title>
+<meta name="description" content="خطة نبض بعد المسابقة: المراحل، والسوق، والمنافسون، ونموذج العمل، ودراسة جدوى مبسطة. NABD's plan: stages, market, competitors, business model and a simple feasibility study.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232F8F7B'/%3E%3Cpath d='M3 12h4l2.5-6 4 12 3-9 2 3H21' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#061B19;--bg2:#0B2D2A;--card:#0F3632;--line:rgba(127,227,201,.16);--teal:#42D3B3;--mint:#A8EBD8;
+  --amber:#F2C14E;--text:#ECF7F3;--muted:#9FBFB6;--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:not(.en) .en, body.en .ar{display:none!important}
+a{color:inherit}
+.wrap{width:min(1140px,100% - 32px);margin-inline:auto}
+
+/* top bar */
+.top{position:fixed;inset:0 0 auto;z-index:20;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);background:rgba(6,27,25,.62);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.04em;text-decoration:none}
+.brand i{width:34px;height:34px;border-radius:10px;background:#2F8F7B;display:grid;place-items:center}
+.topr{display:flex;gap:8px}
+.lang,.home{font:inherit;font-weight:600;font-size:14px;color:var(--text);background:transparent;border:1px solid var(--line);
+  border-radius:999px;padding:6px 16px;cursor:pointer;text-decoration:none}
+.lang:hover,.home:hover{border-color:var(--teal)}
+.brand,.lang,.home{white-space:nowrap}
+@media (max-width:420px){.brand span{display:none!important}}
+
+/* hero */
+.hero{padding:140px 0 70px;background:radial-gradient(120% 80% at 70% 20%,#124A44 0%,var(--bg) 62%)}
+.kicker{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--teal);border:1px solid var(--line);
+  border-radius:999px;padding:5px 14px;margin-bottom:20px}
+h1{font-size:clamp(52px,9vw,104px);line-height:1.05;font-weight:700}
+.tag{font-size:clamp(22px,3vw,34px);font-weight:600;line-height:1.4;margin:16px 0 12px}
+.tag em{font-style:normal;color:var(--teal)}
+.sub{color:var(--muted);font-size:clamp(16px,1.6vw,19px);max-width:40em}
+.nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.nav a{text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-weight:600;font-size:15px}
+.nav a:hover{border-color:var(--teal);color:var(--teal)}
+
+/* sections */
+section{padding:90px 0;position:relative}
+.alt{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.eyebrow{color:var(--teal);font-weight:600;font-size:14px;letter-spacing:.1em;margin-bottom:10px}
+h2{font-size:clamp(30px,4.4vw,48px);line-height:1.2;font-weight:700;margin-bottom:16px}
+.lead{color:var(--muted);font-size:clamp(17px,1.8vw,20px);max-width:46em}
+.grid{display:grid;gap:18px;margin-top:40px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:linear-gradient(180deg,var(--card),#0B2B28);border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;position:relative}
+.card h3{font-size:21px;line-height:1.35;margin:12px 0 8px}
+.card p,.card li{color:var(--muted);font-size:16px}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;border-radius:999px;padding:4px 12px}
+.chip.now{background:rgba(66,211,179,.16);color:var(--teal)}
+.chip.tested{background:rgba(168,235,216,.1);color:var(--mint);border:1px solid rgba(168,235,216,.35)}
+.chip.next{border:1px solid rgba(242,193,78,.55);color:var(--amber)}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.note{margin-top:22px;color:var(--muted);font-size:15.5px;border-inline-start:3px solid var(--amber);padding:6px 14px}
+.note b{color:var(--text)}
+sup a{color:var(--teal);text-decoration:none;font-size:.75em;font-weight:700}
+
+/* stages */
+.stages{margin-top:44px;display:grid;gap:22px}
+.stage{display:grid;grid-template-columns:200px 1fr;gap:26px;background:linear-gradient(180deg,var(--card),#0B2B28);
+  border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.stage .when{color:var(--amber);font-weight:600;font-size:14px;letter-spacing:.06em}
+.stage .no{font-size:56px;font-weight:700;line-height:1;color:var(--teal);opacity:.9}
+.stage h3{font-size:24px;line-height:1.3;margin-top:8px}
+.cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:22px}
+.cols h4{font-size:14px;letter-spacing:.06em;color:var(--teal);margin-bottom:8px}
+.cols ul{list-style:none;display:grid;gap:7px}
+.cols li{color:var(--muted);font-size:15.5px;padding-inline-start:16px;position:relative}
+.cols li::before{content:"";position:absolute;inset-inline-start:0;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.cols .ok{color:var(--text);font-size:15.5px}
+
+/* numbers */
+.big{font-size:clamp(30px,3.6vw,42px);font-weight:700;line-height:1.15;color:var(--teal)}
+.big small{font-size:.5em;color:var(--muted);font-weight:600}
+.card .lbl{color:var(--text);font-weight:600;font-size:17px;margin-bottom:6px}
+.card .per{color:var(--muted);font-size:14px;margin:2px 0 10px}
+.card .here{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);color:var(--text);font-weight:600;font-size:15.5px}
+.quote{margin-top:34px;border-inline-start:4px solid var(--teal);padding:22px 26px;background:rgba(66,211,179,.07);
+  border-radius:var(--r);font-size:clamp(18px,2vw,22px);line-height:1.7}
+.quote span.by{display:block;color:var(--muted);font-size:15px;margin-top:6px}
+
+/* tables */
+.tw{overflow-x:auto;margin-top:36px;border:1px solid var(--line);border-radius:var(--r)}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th,td{padding:16px 18px;text-align:start;vertical-align:top;border-bottom:1px solid var(--line);font-size:15.5px}
+th{color:var(--teal);font-size:14px;letter-spacing:.04em;background:#0A2724}
+td{color:var(--muted)}
+td b{color:var(--text)}
+tr.grp td{background:#0A2724;color:var(--amber);font-weight:700;font-size:14px;letter-spacing:.04em;padding:10px 18px}
+tr.us td{background:rgba(66,211,179,.09);color:var(--text)}
+tr:last-child td{border-bottom:0}
+.cost td:last-child,.cost th:last-child{text-align:end;white-space:nowrap}
+.concl{margin-top:26px;background:linear-gradient(180deg,#145249,#0E3A35);border:1px solid rgba(66,211,179,.5);border-radius:var(--r);padding:24px 26px}
+.concl h3{font-size:20px;margin-bottom:8px}
+.concl p{color:var(--text);font-size:16.5px}
+
+/* business */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:30px;counter-reset:f}
+.flow div{border:1px dashed var(--line);border-radius:16px;padding:16px;position:relative;font-weight:600}
+.flow div::before{counter-increment:f;content:counter(f);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;
+  background:var(--teal);color:#05211E;font-size:14px;margin-bottom:8px}
+.flow small{display:block;color:var(--muted);font-weight:400;font-size:14.5px;margin-top:4px}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.pills>span{border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-weight:600;font-size:15px}
+ol.steps{list-style:none;counter-reset:s;display:grid;gap:12px;margin-top:8px}
+ol.steps li{counter-increment:s;padding-inline-start:40px;position:relative;color:var(--muted)}
+ol.steps li::before{content:counter(s);position:absolute;inset-inline-start:0;top:0;width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--teal);color:var(--teal);display:grid;place-items:center;font-size:14px;font-weight:700}
+ol.steps b{color:var(--text)}
+
+/* sources */
+.src{margin-top:30px;display:grid;gap:10px;counter-reset:r;list-style:none}
+.src li{counter-increment:r;color:var(--muted);font-size:15px;padding-inline-start:40px;position:relative;scroll-margin-top:80px}
+.src li::before{content:"[" counter(r) "]";position:absolute;inset-inline-start:0;color:var(--teal);font-weight:700}
+.src a{color:var(--mint);word-break:break-word}
+
+footer{padding:56px 0 46px;border-top:1px solid var(--line);text-align:center;color:var(--muted)}
+footer .links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+footer .links a{text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:10px 22px;color:var(--text);font-weight:600}
+footer .links a:hover{border-color:var(--teal)}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+@media (max-width:900px){
+  .g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}
+  .stage{grid-template-columns:1fr;gap:14px;padding:22px}
+  .cols{grid-template-columns:1fr;gap:16px}
+  .flow{grid-template-columns:1fr 1fr}
+  section{padding:68px 0}
+  .hero{padding-top:110px}
+}
+@media (min-width:620px) and (max-width:900px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* phones: wide tables become stacked cards, so nothing needs sideways scrolling */
+@media (max-width:700px){
+  .tw.stack{border:0;border-radius:0;overflow:visible}
+  .tw.stack table{min-width:0}
+  .tw.stack thead{display:none}
+  .tw.stack tbody,.tw.stack tr,.tw.stack td{display:block}
+  .tw.stack tr{border:1px solid var(--line);border-radius:16px;margin-top:12px;padding:8px 0;background:linear-gradient(180deg,var(--card),#0B2B28)}
+  .tw.stack td{border:0;padding:6px 16px}
+  .tw.stack tr.grp{border:0;background:none;padding:0;margin-top:26px}
+  .tw.stack tr.grp td{background:none;padding:0 4px}
+  .tw.stack tr.us{background:rgba(66,211,179,.12);border-color:rgba(66,211,179,.5)}
+  .tw.stack tr.us td{background:none}
+  .rivals-t td:nth-child(n+2)::before{display:block;font-size:12.5px;font-weight:600;color:var(--teal);letter-spacing:.02em}
+  body:not(.en) .rivals-t td:nth-child(2)::before{content:"وش يقيس"}
+  body:not(.en) .rivals-t td:nth-child(3)::before{content:"شرطه أو حدّه"}
+  body:not(.en) .rivals-t td:nth-child(4)::before{content:"السعر المعلن"}
+  body.en .rivals-t td:nth-child(2)::before{content:"What it measures"}
+  body.en .rivals-t td:nth-child(3)::before{content:"Requirement or limit"}
+  body.en .rivals-t td:nth-child(4)::before{content:"Published price"}
+  .risks-t td:first-child{padding-top:10px}
+  .cost td:last-child{white-space:normal}
+}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="../index.html"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2.5-6 4 12 3-9 2 3H22"/></svg></i>
+    <span class="ar">نبض · NABD</span><span class="en">NABD · نبض</span></a>
+  <div class="topr">
+    <a class="home" href="../index.html"><span class="ar">الرئيسية</span><span class="en">Home</span></a>
+    <button class="lang" id="lang" type="button"><span class="ar">English</span><span class="en">عربي</span></button>
+  </div>
+</div></header>
+
+<!-- HERO -->
+<section class="hero"><div class="wrap rv">
+  <span class="kicker"><span class="ar">ما بعد المسابقة</span><span class="en">Beyond the competition</span></span>
+  <h1><span class="ar">خطة نبض</span><span class="en">NABD's plan</span></h1>
+  <p class="tag"><span class="ar">من مشروع بحثي… إلى <em>منتج سعودي</em> يقيس النبض والتنفّس عن بُعد، وخلف الحواجز</span>
+    <span class="en">From a research project to a <em>Saudi product</em> that reads heart rate and breathing from a distance, and behind barriers</span></p>
+  <p class="sub"><span class="ar">وش بنسوي بعد المسابقة، ومين يحتاج نبض، وكيف يدخل السوق، وكم يكلّف. وكل رقم هنا له مصدره في آخر الصفحة.</span>
+    <span class="en">What we will do after the competition, who needs NABD, how it reaches the market, and what it costs. Every number here has its source at the bottom of the page.</span></p>
+  <nav class="nav">
+    <a href="#today"><span class="ar">وين وصلنا</span><span class="en">Today</span></a>
+    <a href="#plan"><span class="ar">المراحل</span><span class="en">Stages</span></a>
+    <a href="#market"><span class="ar">السوق</span><span class="en">Market</span></a>
+    <a href="#rivals"><span class="ar">المنافسون</span><span class="en">Competitors</span></a>
+    <a href="#business"><span class="ar">نموذج العمل</span><span class="en">Business model</span></a>
+    <a href="#feasibility"><span class="ar">الجدوى</span><span class="en">Feasibility</span></a>
+    <a href="#risks"><span class="ar">المخاطر</span><span class="en">Risks</span></a>
+    <a href="#sources"><span class="ar">المصادر</span><span class="en">Sources</span></a>
+  </nav>
+</div></section>
+
+<!-- TODAY -->
+<section class="alt" id="today"><div class="wrap">
+  <div class="rv">
+    <p class="eyebrow"><span class="ar">نقطة البداية</span><span class="en">The starting point</span></p>
+    <h2><span class="ar">وين وصلنا اليوم</span><span class="en">Where we are today</span></h2>
+  </div>
+  <div class="grid g4">
+    <div class="card rv"><span class="chip now"><span class="ar">يعمل اليوم</span><span class="en">Works today</span></span>
+      <h3><span class="ar">يقيس تنفّس كل شخص ونبضه لحاله، عن بُعد</span><span class="en">Reads each person's breathing and heart rate from a distance</span></h3>
+      <p><span class="ar">بدون لمس، في المساحة المفتوحة وخلف الحواجز، مع درجة ثقة لكل قراءة.</span><span class="en">With no touch, in open space and behind barriers, with a confidence level for every reading.</span></p></div>
+    <div class="card rv"><span class="chip tested"><span class="ar">مجرّب على تسجيلات حقيقية</span><span class="en">Tested on real recordings</span></span>
+      <h3><span class="ar">يكشف وجود الإنسان من تنفّسه</span><span class="en">Detects a person from their breathing</span></h3>
+      <p><span class="ar">في المساحة المفتوحة وخلف الباب. وخلف الجدار خطوتنا الجاية.</span><span class="en">In open space and behind a door; behind a wall is our next step.</span></p></div>
+    <div class="card rv"><span class="chip tested"><span class="ar">مجرّب على تسجيلات حقيقية</span><span class="en">Tested on real recordings</span></span>
+      <h3><span class="ar">يحدد اتجاه كل شخص بهوائياته</span><span class="en">Finds each person's direction with its antennas</span></h3>
+      <p><span class="ar">في المساحة المفتوحة.</span><span class="en">In open space.</span></p></div>
+    <div class="card rv"><span class="chip now"><span class="ar">يعمل اليوم</span><span class="en">Works today</span></span>
+      <h3><span class="ar">نظام برمجي كامل</span><span class="en">A complete software system</span></h3>
+      <p><span class="ar">قرّاء فيزيائية وشبكة عصبية وحَكَم، وكل نتيجة فيه تنعاد بأمر واحد.</span><span class="en">Physics readers, a neural network and a judge; every result can be reproduced with one command.</span></p></div>
+  </div>
+  <p class="note rv"><span class="ar">اختبرنا نبض على الرادار اللي سُجّلت به البيانات العلمية المنشورة، لأنها المتاحة. <b>والخطوة الجاية رادار أعلى حساسية:</b> في محاكاة على تسجيلات حقيقية، رفع دقة النبض خلف الجدار من 26% إلى 39%. يعني الرادار الأفضل والتدريب على بيانات أكثر، الاثنين يرفعون الدقة.</span>
+    <span class="en">We tested NABD on the radar used to record the published scientific data, because that is the data available. <b>The next step is a more sensitive radar:</b> in a simulation on real recordings it raised heart-rate accuracy behind a wall from 26% to 39%. A better radar and training on more data both raise accuracy.</span></p>
+</div></section>
+
+<!-- STAGES -->
+<section id="plan"><div class="wrap">
+  <div class="rv">
+    <p class="eyebrow"><span class="ar">الخطة</span><span class="en">The plan</span></p>
+    <h2><span class="ar">من المسابقة إلى أول منتج: سنة</span><span class="en">From the competition to a first product: one year</span></h2>
+    <p class="lead"><span class="ar">في أفضل الظروف، مع دعم بعد المسابقة. والمدد تقديرية.</span><span class="en">In the best case, with support after the competition. Durations are estimates.</span></p>
+  </div>
+  <div class="stages">
+    <div class="stage rv">
+      <div><div class="no">1</div><div class="when"><span class="ar">الشهر 1 إلى 3</span><span class="en">MONTHS 1–3</span></div>
+        <h3><span class="ar">نبض لحظي برادار أفضل</span><span class="en">Real-time NABD on a better radar</span></h3></div>
+      <div class="cols">
+        <div><h4><span class="ar">وش نسوي</span><span class="en">WHAT WE DO</span></h4><ul>
+          <li><span class="ar">نختار رادارًا أعلى حساسية بهوائيات أكثر، ونشغّل نبض عليه لحظيًا.</span><span class="en">Choose a more sensitive radar with more antennas, and run NABD on it in real time.</span></li>
+          <li><span class="ar">نربط الاكتشاف والتحديد والقياس في سلسلة وحدة، بدون ما أحد يقول للنظام وين الناس.</span><span class="en">Combine detection, location and measurement into one pipeline, without anyone telling the system where people are.</span></li>
+          <li><span class="ar">نقصّر زمن الاستماع اللازم للنبض.</span><span class="en">Shorten the listening time that heart rate needs.</span></li></ul></div>
+        <div><h4><span class="ar">وش نحتاج</span><span class="en">WHAT WE NEED</span></h4><ul>
+          <li><span class="ar">الرادار الجديد، وحاسب صغير.</span><span class="en">The new radar and a small computer.</span></li>
+          <li><span class="ar">مشرف أكاديمي.</span><span class="en">An academic supervisor.</span></li></ul></div>
+        <div><h4><span class="ar">علامة النجاح</span><span class="en">SUCCESS LOOKS LIKE</span></h4>
+          <p class="ok"><span class="ar">عرض حي قدّام الناس: يقرأ نبض شخص وتنفّسه عن بُعد، وتنفّس شخص خلف باب.</span><span class="en">A live public demo: reading a person's heart rate and breathing from a distance, and a person's breathing behind a door.</span></p></div>
+      </div>
+    </div>
+    <div class="stage rv">
+      <div><div class="no">2</div><div class="when"><span class="ar">الشهر 3 إلى 6</span><span class="en">MONTHS 3–6</span></div>
+        <h3><span class="ar">بيانات سعودية</span><span class="en">Saudi data</span></h3></div>
+      <div class="cols">
+        <div><h4><span class="ar">وش نسوي</span><span class="en">WHAT WE DO</span></h4><ul>
+          <li><span class="ar">نسجّل متطوعين مع تخطيط القلب الطبي، بعد موافقة لجنة أخلاقيات البحث.</span><span class="en">Record volunteers alongside a medical ECG, after research-ethics approval.</span></li>
+          <li><span class="ar">في غرف عادية، وخلف جدران مبانينا: البلك والخرسانة.</span><span class="en">In ordinary rooms, and behind the walls of our own buildings: concrete block and concrete.</span></li>
+          <li><span class="ar">نعيد تدريب الشبكة على البيانات الجديدة والرادار الجديد.</span><span class="en">Retrain the network on the new data and the new radar.</span></li>
+          <li><span class="ar">ننشر النتائج في ورقة علمية محكّمة.</span><span class="en">Publish the results in a peer-reviewed paper.</span></li></ul></div>
+        <div><h4><span class="ar">وش نحتاج</span><span class="en">WHAT WE NEED</span></h4><ul>
+          <li><span class="ar">شراكة مع جامعة أو مستشفى جامعي.</span><span class="en">A partnership with a university or a university hospital.</span></li>
+          <li><span class="ar">متطوعين.</span><span class="en">Volunteers.</span></li></ul></div>
+        <div><h4><span class="ar">علامة النجاح</span><span class="en">SUCCESS LOOKS LIKE</span></h4>
+          <p class="ok"><span class="ar">مجموعة بيانات سعودية، ودقة أعلى على الرادار الجديد.</span><span class="en">A Saudi dataset, and higher accuracy on the new radar.</span></p></div>
+      </div>
+    </div>
+    <div class="stage rv">
+      <div><div class="no">3</div><div class="when"><span class="ar">الشهر 6 إلى 9</span><span class="en">MONTHS 6–9</span></div>
+        <h3><span class="ar">نموذج أولي وتجارب</span><span class="en">Prototype and trials</span></h3></div>
+      <div class="cols">
+        <div><h4><span class="ar">وش نسوي</span><span class="en">WHAT WE DO</span></h4><ul>
+          <li><span class="ar">جهاز صغير بشاشة عربية بسيطة.</span><span class="en">A small device with a simple Arabic screen.</span></li>
+          <li><span class="ar">تجربتين بالتوازي: مع دار رعاية أو مستشفى للقياس عن بُعد، ومع جهة إنقاذ في موقع تدريب خلف الحواجز.</span><span class="en">Two trials in parallel: with a care home or hospital for distance measurement, and with a rescue agency at a training site behind barriers.</span></li>
+          <li><span class="ar">نبدأ إجراءات الاعتماد: هيئة الاتصالات والفضاء والتقنية للجهاز، والهيئة العامة للغذاء والدواء للاستخدام الطبي.</span><span class="en">Start approvals: the Communications, Space &amp; Technology Commission for the device, and the Saudi Food &amp; Drug Authority for medical use.</span></li></ul></div>
+        <div><h4><span class="ar">وش نحتاج</span><span class="en">WHAT WE NEED</span></h4><ul>
+          <li><span class="ar">جهات شريكة.</span><span class="en">Partner organisations.</span></li>
+          <li><span class="ar">تمويل لبناء النموذج.</span><span class="en">Funding to build the prototype.</span></li></ul></div>
+        <div><h4><span class="ar">علامة النجاح</span><span class="en">SUCCESS LOOKS LIKE</span></h4>
+          <p class="ok"><span class="ar">تقارير تجربة من الجهات نفسها.</span><span class="en">Trial reports written by the partners themselves.</span></p></div>
+      </div>
+    </div>
+    <div class="stage rv">
+      <div><div class="no">4</div><div class="when"><span class="ar">الشهر 9 إلى 12</span><span class="en">MONTHS 9–12</span></div>
+        <h3><span class="ar">أول منتج</span><span class="en">A first product</span></h3></div>
+      <div class="cols">
+        <div><h4><span class="ar">وش نسوي</span><span class="en">WHAT WE DO</span></h4><ul>
+          <li><span class="ar">شركة ناشئة تطوّر نبض وتدعمه.</span><span class="en">A startup that develops and supports NABD.</span></li>
+          <li><span class="ar">أول دفعة أجهزة مع شريك تصنيع محلي.</span><span class="en">A first batch of devices with a local manufacturing partner.</span></li>
+          <li><span class="ar">أول عقود تجريبية.</span><span class="en">First pilot contracts.</span></li></ul></div>
+        <div><h4><span class="ar">وش نحتاج</span><span class="en">WHAT WE NEED</span></h4><ul>
+          <li><span class="ar">شريك صناعي أو مستثمر.</span><span class="en">An industrial partner or an investor.</span></li></ul></div>
+        <div><h4><span class="ar">علامة النجاح</span><span class="en">SUCCESS LOOKS LIKE</span></h4>
+          <p class="ok"><span class="ar">أول عميل يدفع.</span><span class="en">A first paying customer.</span></p></div>
+      </div>
+    </div>
+  </div>
+  <p class="note rv"><span class="ar">الاعتماد الطبي ممكن يطوّل أكثر من سنة. فلين يكتمل، نشتغل مع المستشفيات بتجارب بحثية.</span>
+    <span class="en">Medical approval may take longer than a year. Until it is complete, we work with hospitals through research trials.</span></p>
+</div></section>
+
+<!-- MARKET -->
+<section class="alt" id="market"><div class="wrap">
+  <div class="rv">
+    <p class="eyebrow"><span class="ar">السوق</span><span class="en">The market</span></p>
+    <h2><span class="ar">سوقين يدخلهم نبض</span><span class="en">Two markets NABD enters</span></h2>
+    <p class="lead"><span class="ar">حجم السوق يعني: كم ينصرف في السنة على شراء هالأجهزة حول العالم، وهو نفسه مبيعات الشركات اللي تبيعها. والأرقام تقديرات من شركات أبحاث تختلف حسب تعريف كل شركة، فنعرضها كنطاق.</span>
+      <span class="en">Market size is how much the world spends on these devices each year, which equals the sales of the companies that sell them. The figures are research-firm estimates that vary with each firm's definition, so we show ranges.</span></p>
+  </div>
+  <div class="grid g2">
+    <div class="card rv"><p class="lbl"><span class="ar">القياس عن بُعد، بدون لمس</span><span class="en">Measuring from a distance, with no touch</span></p>
+      <div class="big"><span class="ar">0.33 إلى 1.8 <small>مليار $</small></span><span class="en">$0.33–1.8 <small>billion</small></span></div>
+      <p class="per"><span class="ar">في السنة، حسب تقديرات 2025</span><span class="en">per year, 2025 estimates</span></p>
+      <p><span class="ar">تصرفها المستشفيات ودور الرعاية والبيوت على أجهزة تقيس النبض والتنفّس بدون لمس. ومتوقع توصل 0.73 إلى 8.9 مليار $ في السنة بحلول 2034.</span>
+        <span class="en">Spent by hospitals, care homes and households on devices that measure heart rate and breathing without touch; expected to reach $0.73–8.9 billion a year by 2034.</span><sup><a href="#s1">1</a>,<a href="#s2">2</a></sup></p>
+      <p class="here"><span class="ar">وهنا يدخل نبض: جهاز يقيس عن بُعد.</span><span class="en">This is where NABD comes in: a device that measures from a distance.</span></p></div>
+    <div class="card rv"><p class="lbl"><span class="ar">الرؤية خلف الجدار</span><span class="en">Seeing through walls</span></p>
+      <div class="big"><span class="ar">250 إلى 330 <small>مليون $</small></span><span class="en">$250–330 <small>million</small></span></div>
+      <p class="per"><span class="ar">في السنة، حسب تقديرات 2025 و2026</span><span class="en">per year, 2025 and 2026 estimates</span></p>
+      <p><span class="ar">تصرفها الجهات العسكرية والأمنية وفرق الإنقاذ على رادارات تكشف الناس خلف الجدران. ومتوقع توصل 353 إلى 735 مليون $ في السنة خلال نحو سبع سنوات.</span>
+        <span class="en">Spent by military, security and rescue agencies on radars that detect people behind walls; expected to reach $353–735 million a year within about seven years.</span><sup><a href="#s3">3</a>,<a href="#s4">4</a></sup></p>
+      <p class="here"><span class="ar">وهنا يدخل نبض: قراءة لكل شخص خلف الحاجز.</span><span class="en">This is where NABD comes in: a reading for every person behind the barrier.</span></p></div>
+  </div>
+  <p class="note rv"><span class="ar"><b>ودليل إن المستثمرين يدفعون في هالمجال:</b> الشركة اللي طوّرت جهاز المراقبة الطبي بالرادار XK300 جمعت 10 ملايين $ في 2021.</span>
+    <span class="en"><b>Evidence that investors fund this field:</b> the company behind the XK300 medical radar monitor raised $10 million in 2021.</span><sup><a href="#s5">5</a></sup></p>
+  <h3 class="rv" style="font-size:24px;margin-top:54px"><span class="ar">وفي السعودية</span><span class="en">And in Saudi Arabia</span></h3>
+  <div class="grid g2" style="margin-top:20px">
+    <div class="card rv"><div class="big"><span class="ar">1.6 ← 2.5 <small>مليار $</small></span><span class="en">$1.6 → 2.5 <small>billion</small></span></div>
+      <p><span class="ar">سوق الرعاية الصحية المنزلية، من 2024 إلى 2030.</span><span class="en">the home healthcare market, from 2024 to 2030.</span><sup><a href="#s6">6</a></sup></p></div>
+    <div class="card rv"><div class="big"><span class="ar">+50%</span><span class="en">50%+</span></div>
+      <p><span class="ar">مستهدف توطين الإنفاق على المعدات والخدمات العسكرية بحلول 2030.</span><span class="en">the 2030 target for localising spending on defence equipment and services.</span><sup><a href="#s7">7</a></sup></p></div>
+  </div>
+  <p class="quote rv"><span class="ar">«أكثر من 90% من الناجين في الزلازل يُنقذون في أول ثلاثة أيام.» وكل أداة تختصر وقت البحث تفرق.</span>
+    <span class="en">"More than 90 per cent of earthquake survivors are rescued within the first three days." Every tool that shortens the search matters.</span>
+    <span class="by"><span class="ar">إيلان كيلمان، أستاذ الكوارث والصحة في جامعة كوليدج لندن</span><span class="en">Ilan Kelman, professor of disasters and health, University College London</span><sup><a href="#s8">8</a></sup></span></p>
+</div></section>
+
+<!-- COMPETITORS -->
+<section id="rivals"><div class="wrap">
+  <div class="rv">
+    <p class="eyebrow"><span class="ar">المنافسون</span><span class="en">Competitors</span></p>
+    <h2><span class="ar">مين موجود في السوق؟</span><span class="en">Who is already in the market?</span></h2>
+    <p class="lead"><span class="ar">أجهزة تقيس عن بُعد، وأجهزة تشتغل خلف الجدار، حسب ما هو منشور عن كل واحد.</span>
+      <span class="en">Devices that measure from a distance and devices that work behind walls, based on what is published about each.</span></p>
+  </div>
+  <div class="tw stack rivals-t rv"><table>
+    <thead><tr><th><span class="ar">الجهاز</span><span class="en">Device</span></th><th><span class="ar">وش يقيس</span><span class="en">What it measures</span></th>
+      <th><span class="ar">شرطه أو حدّه</span><span class="en">Requirement or limit</span></th><th><span class="ar">السعر المعلن</span><span class="en">Published price</span></th></tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="4"><span class="ar">القياس عن بُعد، بدون حاجز</span><span class="en">MEASURING FROM A DISTANCE, NO BARRIER</span></td></tr>
+      <tr><td><b><span class="ar">حساس تحت المرتبة</span><span class="en">Under-mattress sensor</span></b><br><span class="ar">مثل Withings Sleep Analyzer</span><span class="en">e.g. Withings Sleep Analyzer</span><sup><a href="#s9">9</a></sup></td>
+        <td><span class="ar">النبض والتنفّس أثناء النوم</span><span class="en">Heart rate and breathing during sleep</span></td>
+        <td><span class="ar">لازم الشخص يكون نايم على سريره</span><span class="en">The person must be asleep in bed</span></td>
+        <td><span class="ar">170 إلى 200 $</span><span class="en">$170–200</span></td></tr>
+      <tr><td><b><span class="ar">قياس من فيديو الوجه</span><span class="en">Face-video measurement</span></b><br><span class="ar">مثل تطبيق Anura</span><span class="en">e.g. the Anura app</span><sup><a href="#s10">10</a></sup></td>
+        <td><span class="ar">النبض من تغيّرات تدفّق الدم في الوجه</span><span class="en">Heart rate from blood-flow changes in the face</span></td>
+        <td><span class="ar">لازم الوجه قدّام الكاميرا 30 ثانية، بإضاءة كافية</span><span class="en">The face must stay in front of the camera for 30 seconds, in enough light</span></td>
+        <td><span class="ar">نسخة مجانية محدودة</span><span class="en">A limited free version</span></td></tr>
+      <tr><td><b><span class="ar">جهاز مراقبة طبي بالرادار</span><span class="en">Medical radar monitor</span></b><br><span class="ar">مثل XK300، بموافقة FDA في 2021</span><span class="en">e.g. XK300, FDA-cleared in 2021</span><sup><a href="#s11">11</a></sup></td>
+        <td><span class="ar">النبض والتنفّس وقت الراحة، والحركة والوجود</span><span class="en">Resting heart and breathing rates, motion and presence</span></td>
+        <td><span class="ar">داخل نفس الغرفة</span><span class="en">Inside the same room</span></td>
+        <td><span class="ar">غير معلن</span><span class="en">Not published</span></td></tr>
+      <tr><td><b><span class="ar">الساعات والأساور الذكية</span><span class="en">Smartwatches and bands</span></b></td>
+        <td><span class="ar">النبض</span><span class="en">Heart rate</span></td>
+        <td><span class="ar">لازم الشخص يلبسها</span><span class="en">The person must wear it</span></td>
+        <td><span class="ar">حسب الجهاز</span><span class="en">Varies</span></td></tr>
+      <tr class="grp"><td colspan="4"><span class="ar">خلف الجدار</span><span class="en">BEHIND A WALL</span></td></tr>
+      <tr><td><b><span class="ar">كاشف أحياء تحت الأنقاض</span><span class="en">Rubble survivor detector</span></b><br><span class="ar">مثل FINDER من ناسا</span><span class="en">e.g. NASA's FINDER</span><sup><a href="#s22">22</a></sup></td>
+        <td><span class="ar">هل فيه أحياء تحت الأنقاض (لحد 5)، من نبضهم وتنفّسهم، ومكانهم التقريبي</span><span class="en">Whether there are living people under rubble (up to 5), from heartbeat and breathing, and roughly where</span></td>
+        <td><span class="ar">مصمّم للأنقاض ولكشف الوجود، وما لقينا دقة منشورة لأرقام النبض مقارنة بجهاز طبي</span><span class="en">Built for rubble and for detecting presence; we found no published accuracy for its heart-rate numbers against a medical device</span></td>
+        <td><span class="ar">غير معلن</span><span class="en">Not published</span></td></tr>
+      <tr><td><b><span class="ar">كاشف ناجين تحت الأنقاض</span><span class="en">Rubble survivor detector</span></b><br><span class="ar">مثل LifeLocator</span><span class="en">e.g. LifeLocator</span><sup><a href="#s12">12</a></sup></td>
+        <td><span class="ar">هل فيه حركة أو تنفّس، وبُعد الشخص</span><span class="en">Whether there is motion or breathing, and how far away</span></td>
+        <td><span class="ar">ما يعطي أرقام النبض ولا التنفّس</span><span class="en">Gives no heart or breathing rates</span></td>
+        <td><span class="ar">غير معلن</span><span class="en">Not published</span></td></tr>
+      <tr><td><b><span class="ar">رادار يدوي للشرطة</span><span class="en">Handheld police radar</span></b><br><span class="ar">مثل Range-R</span><span class="en">e.g. Range-R</span><sup><a href="#s13">13</a></sup></td>
+        <td><span class="ar">هل فيه حركة أو تنفّس خلف الجدار</span><span class="en">Whether there is motion or breathing behind a wall</span></td>
+        <td><span class="ar">ما يعطي أرقام النبض ولا التنفّس</span><span class="en">Gives no heart or breathing rates</span></td>
+        <td><span class="ar">نحو 6,000 $ (2015)</span><span class="en">About $6,000 (2015)</span></td></tr>
+      <tr class="us"><td><b><span class="ar">نبض</span><span class="en">NABD</span></b></td>
+        <td><span class="ar">تنفّس كل شخص ونبضه لحاله بالأرقام، مع درجة ثقة، ويسكت لما يشك</span><span class="en">Each person's breathing and heart rate as numbers, with a confidence level, silent when unsure</span></td>
+        <td><span class="ar">عن بُعد بدون لمس، وخلف الأبواب والحواجز. حتى 5 أشخاص، من 1 إلى 4 م</span><span class="en">From a distance with no touch, and behind doors and barriers; up to 5 people, 1–4 m away</span></td>
+        <td><span class="ar">في مرحلة التطوير</span><span class="en">In development</span></td></tr>
+    </tbody></table></div>
+  <div class="concl rv">
+    <h3><span class="ar">الخلاصة، حسب بحثنا</span><span class="en">The bottom line, as far as we found</span></h3>
+    <p><span class="ar">أجهزة القياس عن بُعد اللي فوق تحتاج الشخص في نفس الغرفة، نايم أو لابس الجهاز أو وجهه قدّام الكاميرا. وأجهزة الإنقاذ مصمّمة تكشف إن فيه أحد حي خلف الجدار أو تحت الأنقاض ومكانه التقريبي، وما لقينا لها دقة منشورة لأرقام النبض. وفي الأبحاث، قرأ فريق MIT النبض خلف جدار جبس لشخص جالس، وطوّروه لجهاز يُستخدم في دراسات صحية. والفرق في نبض: رقم لكل شخص مع درجة ثقة، ودقة منشورة مقابل تخطيط القلب، على بيانات فريق ثاني خلف باب خشب وجدار بلك 17 سم ولحد 5 أشخاص. وهي بيانات قال أصحابها إن قياس النبض منها بالطرق المباشرة ما بدا ممكن.</span>
+      <span class="en">The distance devices above need the person in the same room, asleep, wearing the device, or facing a camera. Rescue devices are built to find whether someone is alive behind a wall or under rubble, and roughly where, and we found no published accuracy for their heart-rate numbers. In research, an MIT team read heart rate behind a drywall for one seated person, and turned it into a device used in health studies. What NABD adds: a number for each person with a confidence level, and published accuracy against a medical ECG, on another team's data behind a wooden door and a 17 cm block wall with up to five people. The team that published this data said estimating heart rate from it with straightforward approaches did not seem possible.</span><sup><a href="#s22">22</a>,<a href="#s20">20</a>,<a href="#s21">21</a>,<a href="#s14">14</a></sup></p>
+  </div>
+</div></section>
+
+<!-- BUSINESS MODEL -->
+<section class="alt" id="business"><div class="wrap">
+  <div class="rv">
+    <p class="eyebrow"><span class="ar">نموذج العمل</span><span class="en">Business model</span></p>
+    <h2><span class="ar">كيف يدخل نبض السوق؟</span><span class="en">How does NABD reach the market?</span></h2>
+    <p class="lead"><span class="ar">نبض تقنية متكاملة: رادار أعلى حساسية، وخوارزمية فيزيائية، وشبكة عصبية تتعلّم من كل بيانات جديدة. ومنها ثلاث طرق للدخل:</span>
+      <span class="en">NABD is a complete technology: a more sensitive radar, physics algorithms, and a neural network that learns from every new dataset. That gives three routes to revenue:</span></p>
+  </div>
+  <div class="grid g3">
+    <div class="card rv"><span class="chip now"><span class="ar">نبدأ فيها</span><span class="en">We start here</span></span>
+      <h3><span class="ar">الرعاية الصحية</span><span class="en">Healthcare</span></h3>
+      <p><span class="ar">مراقبة نبض كبار السن والمرضى وتنفّسهم عن بُعد، في البيوت ودور الرعاية والمستشفيات، بدون أسلاك ولا كاميرات. باشتراك شهري أو بيع مباشر للجهات.</span>
+        <span class="en">Monitoring the heart rate and breathing of the elderly and patients from a distance, at home, in care homes and in hospitals, with no wires and no cameras; by monthly subscription or direct sale.</span></p>
+      <p style="margin-top:10px"><span class="ar"><b style="color:var(--text)">ليش نبدأ فيها؟</b> سوقها أكبر، وعملاؤها كثير، ودقة نبض أعلى في المساحة المفتوحة.</span>
+        <span class="en"><b style="color:var(--text)">Why first?</b> A bigger market, many customers, and NABD's accuracy is highest in open space.</span></p></div>
+    <div class="card rv"><span class="chip now"><span class="ar">بالتوازي</span><span class="en">In parallel</span></span>
+      <h3><span class="ar">الإنقاذ والأمن</span><span class="en">Rescue and security</span></h3>
+      <p><span class="ar">الدفاع المدني والجهات الأمنية: جهاز جاهز مع ترخيص سنوي للبرنامج، وتدريب ودعم. وميزة نبض هنا: رقم لكل شخص مع درجة ثقة، ودقة مختبرة مقابل تخطيط القلب.</span>
+        <span class="en">Civil Defence and security agencies: a ready device with a yearly software licence, training and support. NABD's edge here: a number for each person with a confidence level, and accuracy tested against a medical ECG.</span></p></div>
+    <div class="card rv"><span class="chip next"><span class="ar">لاحقًا</span><span class="en">Later</span></span>
+      <h3><span class="ar">مصنّعو الأجهزة</span><span class="en">Device makers</span></h3>
+      <p><span class="ar">نرخّص برنامج نبض لمصنّعي الرادارات والأجهزة الطبية، برسوم على كل جهاز يُباع. وهم يكسبون قدرة قياس جاهزة بدل ما يبنونها من الصفر.</span>
+        <span class="en">We license NABD's software to radar and medical-device makers for a fee per unit sold. They gain a ready-made measuring capability instead of building one from scratch.</span></p></div>
+  </div>
+  <div class="pills rv">
+    <span><span class="ar">اشتراك شهري</span><span class="en">Monthly subscription</span></span>
+    <span><span class="ar">بيع الأجهزة</span><span class="en">Device sales</span></span>
+    <span><span class="ar">ترخيص سنوي للبرنامج</span><span class="en">Yearly software licence</span></span>
+    <span><span class="ar">تدريب ودعم</span><span class="en">Training &amp; support</span></span>
+    <span><span class="ar">رسوم على كل جهاز</span><span class="en">Per-unit fees</span></span>
+  </div>
+  <h3 class="rv" style="font-size:22px;margin-top:50px"><span class="ar">الطريق لأول عميل</span><span class="en">The road to the first customer</span></h3>
+  <div class="flow rv">
+    <div><b><span class="ar">عرض لجهة</span><span class="en">A demo</span></b><small><span class="ar">مستشفى أو دار رعاية أو جهة إنقاذ.</span><span class="en">For a hospital, a care home or a rescue agency.</span></small></div>
+    <div><b><span class="ar">تجربة مجانية</span><span class="en">A free trial</span></b><small><span class="ar">في مكانهم، مع ناسهم.</span><span class="en">At their site, with their people.</span></small></div>
+    <div><b><span class="ar">تقرير منهم</span><span class="en">Their report</span></b><small><span class="ar">يكتبونه هم، بنتائجهم.</span><span class="en">Written by them, with their results.</span></small></div>
+    <div><b><span class="ar">عقد تجريبي</span><span class="en">A pilot contract</span></b><small><span class="ar">أول أجهزة في الميدان.</span><span class="en">The first devices in the field.</span></small></div>
+  </div>
+</div></section>
+
+<!-- FEASIBILITY -->
+<section id="feasibility"><div class="wrap">
+  <div class="rv">
+    <p class="eyebrow"><span class="ar">الجدوى</span><span class="en">Feasibility</span></p>
+    <h2><span class="ar">دراسة جدوى مبسّطة</span><span class="en">A simple feasibility study</span></h2>
+  </div>
+  <div class="grid g2">
+    <div class="rv">
+      <h3 style="font-size:21px;margin-bottom:6px"><span class="ar">تكلفة النموذج الأول</span><span class="en">Cost of the first prototype</span></h3>
+      <div class="tw" style="margin-top:14px"><table class="cost" style="min-width:0">
+        <thead><tr><th><span class="ar">القطعة</span><span class="en">Part</span></th><th><span class="ar">السعر</span><span class="en">Price</span></th></tr></thead>
+        <tbody>
+          <tr><td><span class="ar">رادار أعلى حساسية بهوائيات أكثر</span><span class="en">A more sensitive radar with more antennas</span></td><td><span class="ar">بعرض سعر في المرحلة 1</span><span class="en">To be quoted in stage 1</span></td></tr>
+          <tr><td><span class="ar">حاسب صغير للذكاء الاصطناعي</span><span class="en">A small AI computer</span><sup><a href="#s15">15</a></sup></td><td><span class="ar">249 $</span><span class="en">$249</span></td></tr>
+          <tr><td><span class="ar">بطارية وهيكل وكابلات (تقديرنا)</span><span class="en">Battery, case and cables (our estimate)</span></td><td><span class="ar">نحو 150 $</span><span class="en">about $150</span></td></tr>
+        </tbody></table></div>
+      <p class="note"><span class="ar">وللمقارنة: الرادار اللي اختبرنا على بياناته كان سعره نحو 600 $، والرادار اليدوي للشرطة نحو 6,000 $ في 2015.</span>
+        <span class="en">For comparison, the radar behind our test data cost about $600, and the handheld police radar about $6,000 in 2015.</span><sup><a href="#s16">16</a>,<a href="#s13">13</a></sup></p>
+    </div>
+    <div class="rv">
+      <h3 style="font-size:21px;margin-bottom:14px"><span class="ar">ليش الفكرة مجدية؟</span><span class="en">Why is it viable?</span></h3>
+      <ol class="steps">
+        <li><span class="ar"><b>تقنية تتحسّن من جهتين:</b> رادار أفضل، وشبكة تتعلّم أكثر مع كل بيانات جديدة.</span><span class="en"><b>Technology that improves in two ways:</b> a better radar, and a network that learns more with every new dataset.</span></li>
+        <li><span class="ar"><b>يتحسّن بالتحديث:</b> كل جهاز مباع يستفيد من كل تطوير جديد في البرنامج.</span><span class="en"><b>Improves with updates:</b> every device sold benefits from every new software improvement.</span></li>
+        <li><span class="ar"><b>سوقين كبيرين:</b> القياس عن بُعد في الرعاية الصحية، وخلف الحواجز في الإنقاذ والأمن.</span><span class="en"><b>Two large markets:</b> distance measurement in healthcare, and behind-barrier reading in rescue and security.</span></li>
+        <li><span class="ar"><b>توجّه وطني:</b> نمو الرعاية المنزلية، وأولوية التوطين.</span><span class="en"><b>National direction:</b> growing home healthcare, and localisation as a priority.</span></li>
+      </ol>
+      <h3 style="font-size:21px;margin:30px 0 14px"><span class="ar">التمويل خطوة بخطوة</span><span class="en">Funding, step by step</span></h3>
+      <ol class="steps">
+        <li><span class="ar"><b>الدعم بعد المسابقة، ودعم الجامعة:</b> للمرحلتين الأولى والثانية.</span><span class="en"><b>Support after the competition, and from the university:</b> for stages 1 and 2.</span></li>
+        <li><span class="ar"><b>برنامج منح الابتكار السعودي</b> (هيئة تنمية البحث والتطوير والابتكار): منح بدون حصة ملكية، لتحويل البحث إلى منتج.</span><span class="en"><b>Saudi Innovation Grants Program</b> (RDIA): grants with no ownership stake, for turning research into products.</span><sup><a href="#s17">17</a></sup></li>
+        <li><span class="ar"><b>برامج تسريع الشركات التقنية الناشئة،</b> مثل برنامج مدينة الملك عبدالعزيز للعلوم والتقنية.</span><span class="en"><b>Deep-tech startup accelerators,</b> such as KACST's programme.</span><sup><a href="#s18">18</a></sup></li>
+        <li><span class="ar"><b>شريك صناعي أو مستثمر:</b> للمرحلة الرابعة.</span><span class="en"><b>An industrial partner or investor:</b> for stage 4.</span></li>
+      </ol>
+    </div>
+  </div>
+</div></section>
+
+<!-- RISKS -->
+<section class="alt" id="risks"><div class="wrap">
+  <div class="rv">
+    <p class="eyebrow"><span class="ar">بصراحة</span><span class="en">Being honest</span></p>
+    <h2><span class="ar">المخاطر، وكيف نتعامل معها</span><span class="en">Risks, and how we handle them</span></h2>
+  </div>
+  <div class="tw stack risks-t rv"><table>
+    <thead><tr><th style="width:32%"><span class="ar">الخطر</span><span class="en">Risk</span></th><th><span class="ar">كيف نتعامل معه</span><span class="en">How we handle it</span></th></tr></thead>
+    <tbody>
+      <tr><td><b><span class="ar">الجدران السميكة تضعف الإشارة</span><span class="en">Thick walls weaken the signal</span></b></td>
+        <td><span class="ar">رادار أعلى حساسية: في محاكاة على تسجيلات حقيقية رفع دقة النبض خلف الجدار من 26% إلى 39%. ومعه بيانات أكثر.</span><span class="en">A more sensitive radar: in a simulation on real recordings it raised heart-rate accuracy behind a wall from 26% to 39%. Plus more data.</span></td></tr>
+      <tr><td><b><span class="ar">التراخيص</span><span class="en">Licensing</span></b></td>
+        <td><span class="ar">رادارات هالفئة تشتغل في نطاق الموجات فائقة العرض، وهو منظّم في السعودية (من 6 إلى 8.5 جيجاهرتز)، والجهاز يحتاج اعتماد هيئة الاتصالات والفضاء والتقنية. والاستخدام الطبي يحتاج اعتماد الهيئة العامة للغذاء والدواء.</span>
+          <span class="en">Radars of this class work in the ultra-wideband range, which Saudi Arabia regulates (6–8.5 GHz); the device needs approval from the Communications, Space &amp; Technology Commission. Medical use needs approval from the Saudi Food &amp; Drug Authority.</span><sup><a href="#s19">19</a></sup></td></tr>
+      <tr><td><b><span class="ar">الخصوصية</span><span class="en">Privacy</span></b></td>
+        <td><span class="ar">الرادار ما يصوّر وجوه ولا يسجّل صوت، ويطلّع أرقام بس.</span><span class="en">The radar takes no pictures of faces and records no sound; it outputs numbers only.</span></td></tr>
+      <tr><td><b><span class="ar">قلة البيانات المحلية</span><span class="en">Too little local data</span></b></td>
+        <td><span class="ar">شراكة مع جامعة أو مستشفى جامعي، وموافقة لجنة أخلاقيات البحث.</span><span class="en">A partnership with a university or university hospital, with research-ethics approval.</span></td></tr>
+      <tr><td><b><span class="ar">المنافسة العالمية</span><span class="en">Global competition</span></b></td>
+        <td><span class="ar">قراءة لكل شخص عن بُعد وخلف الحواجز مع درجة ثقة، ودعم محلي بالعربي.</span><span class="en">A reading for every person, from a distance and behind barriers, with a confidence level, and local Arabic support.</span></td></tr>
+      <tr><td><b><span class="ar">الخطأ في الميدان</span><span class="en">Mistakes in the field</span></b></td>
+        <td><span class="ar">نبض يسكت لما يشك، فما يعطي رقمًا غلط وهو واثق.</span><span class="en">NABD stays silent when unsure, so it does not give a wrong number with confidence.</span></td></tr>
+    </tbody></table></div>
+</div></section>
+
+<!-- SOURCES -->
+<section id="sources"><div class="wrap">
+  <div class="rv">
+    <p class="eyebrow"><span class="ar">المصادر</span><span class="en">Sources</span></p>
+    <h2><span class="ar">من وين جت الأرقام</span><span class="en">Where the numbers come from</span></h2>
+  </div>
+  <ol class="src rv">
+    <li id="s1"><span class="ar">سترايتس ريسيرش: سوق أجهزة قياس العلامات الحيوية بدون لمس، من 2025 إلى 2034.</span><span class="en">Straits Research, Non-Contact Vital Signs Detector Market, 2025–2034.</span> <a href="https://straitsresearch.com/report/non-contact-vital-signs-detector-market">straitsresearch.com</a></li>
+    <li id="s2"><span class="ar">ماركت إنتيلو: سوق أجهزة مراقبة العلامات الحيوية بالرادار، من 2025 إلى 2034.</span><span class="en">Market Intelo, Radar-Based Vital Sign Monitor Market, 2025–2034.</span> <a href="https://marketintelo.com/report/radar-based-vital-sign-monitor-market">marketintelo.com</a></li>
+    <li id="s3"><span class="ar">كوهيرنت ماركت إنسايتس: سوق رادار الرؤية خلف الجدار، من 2026 إلى 2033.</span><span class="en">Coherent Market Insights, Through Wall Radar Market, 2026–2033.</span> <a href="https://www.coherentmarketinsights.com/industry-reports/through-wall-radar-market">coherentmarketinsights.com</a></li>
+    <li id="s4"><span class="ar">ريبورت برايم: سوق رادار الرؤية خلف الجدار، من 2025 إلى 2032.</span><span class="en">Report Prime, Through Wall Radar Market, 2025–2032.</span> <a href="https://www.reportprime.com/through-wall-radar-r7409">reportprime.com</a></li>
+    <li id="s5"><span class="ar">هيلثكير آي تي توداي: الشركة المطوّرة لجهاز XK300 تجمع 10 ملايين دولار، ديسمبر 2021.</span><span class="en">Healthcare IT Today, Xandar Kardian raises $10 million in Series A funding, December 2021.</span> <a href="https://www.healthcareittoday.com/2021/12/17/xandar-kardian-raises-10-million-in-series-a-funding/">healthcareittoday.com</a></li>
+    <li id="s6"><span class="ar">كين ريسيرش: سوق الرعاية الصحية المنزلية في السعودية حتى 2030.</span><span class="en">Ken Research, Saudi Arabia Home Healthcare Services Market Outlook to 2030.</span> <a href="https://www.kenresearch.com/industry-reports/saudi-arabia-home-healthcare-services-market">kenresearch.com</a></li>
+    <li id="s7"><span class="ar">الهيئة العامة للصناعات العسكرية: الاستراتيجية.</span><span class="en">General Authority for Military Industries (GAMI), strategy.</span> <a href="https://www.gami.gov.sa/en/strategy">gami.gov.sa</a></li>
+    <li id="s8"><span class="ar">جلف نيوز: ليش أول 72 ساعة حاسمة في الإنقاذ بعد زلزال تركيا وسوريا، فبراير 2023.</span><span class="en">Gulf News, "Why first 72 hours are crucial for Turkey-Syria quake rescues", February 2023.</span> <a href="https://gulfnews.com/world/mena/why-first-72-hours-are-crucial-for-turkey-syria-quake-rescues-1.1675864021699">gulfnews.com</a></li>
+    <li id="s9"><span class="ar">توم جايد: مراجعة حساس النوم Withings Sleep Analyzer، وسعره 199.95 $ من الشركة و169.95 $ عند المتاجر.</span><span class="en">Tom's Guide, Withings Sleep Analyzer review: $199.95 from Withings, $169.95 at retailers.</span> <a href="https://www.tomsguide.com/wellness/sleep-tech/withings-sleep-analyzer-review">tomsguide.com</a></li>
+    <li id="s10"><span class="ar">متجر آبل: تطبيق Anura Lite، يقيس من فيديو سيلفي مدته 30 ثانية.</span><span class="en">Apple App Store, Anura Lite: measures from a 30-second selfie video.</span> <a href="https://apps.apple.com/app/id1358813934">apps.apple.com</a></li>
+    <li id="s11"><span class="ar">فيرس بايوتك: FDA تعتمد جهاز مراقبة المرضى بالرادار XK300، 2021.</span><span class="en">Fierce Biotech, "FDA clears radar-powered, contactless patient monitor from Xandar Kardian", 2021.</span> <a href="https://www.fiercebiotech.com/medtech/fda-clears-radar-powered-contactless-patient-monitor-from-xandar-kardian">fiercebiotech.com</a></li>
+    <li id="s12"><span class="ar">نيو أطلس: جهاز LifeLocator يكشف المحتجزين من تنفّسهم وحركتهم.</span><span class="en">New Atlas, "LifeLocator can detect trapped victims via breathing and motion".</span> <a href="https://newatlas.com/lifelocator-can-detect-trapped-victims-via-breathing-and-motion/5620/">newatlas.com</a></li>
+    <li id="s13"><span class="ar">كاسبرسكي: تقنيات تشوف خلف الجدران (رادار Range-R)، 2015.</span><span class="en">Kaspersky Daily, "Technologies that see through the walls" (Range-R), 2015.</span> <a href="https://blog.kaspersky.com/watching-through-walls">kaspersky.com</a></li>
+    <li id="s14"><span class="ar">شروث وزملاؤه، جامعة دارمشتات التقنية: البيانات اللي اختبرنا عليها، مجلة IEEE TBME، 2024.</span><span class="en">Schroth et al., TU Darmstadt: the dataset we tested on, IEEE TBME, 2024.</span> <a href="https://arxiv.org/abs/2305.15795">arxiv.org</a></li>
+    <li id="s15"><span class="ar">إنفيديا: حاسب Jetson Orin Nano Super، سعر الإطلاق 249 $ في ديسمبر 2024.</span><span class="en">NVIDIA Jetson Orin Nano Super Developer Kit, launch price $249, December 2024.</span> <a href="https://hwbusters.com/news/nvidias-jetson-orin-nano-super-developer-kit-power-affordability-and-ai-innovation-at-249/">hwbusters.com</a></li>
+    <li id="s16"><span class="ar">رادار البيانات المنشورة (Walabot Developer Pack): آخر سعر معلن 599.95 $، ونفد من المتجر.</span><span class="en">The published data's radar (Walabot Developer Pack): last listed at $599.95, sold out.</span> <a href="https://walabot.com/products/walabot-developer-pack-new">walabot.com</a></li>
+    <li id="s17"><span class="ar">مباشر: إطلاق برنامج منح الابتكار السعودي، هيئة تنمية البحث والتطوير والابتكار.</span><span class="en">Mubasher: RDIA and NTDP launch the Saudi Innovation Grants Program.</span> <a href="https://en.sharikatmubasher.com/media-hub/news/21458351/rdia-ntdp-launch-program-to-boost-rd-addressing-national-challenges?lang=en">sharikatmubasher.com</a></li>
+    <li id="s18"><span class="ar">مباشر: مدينة الملك عبدالعزيز للعلوم والتقنية تطلق برنامجًا لتسريع الشركات التقنية الناشئة، ديسمبر 2025.</span><span class="en">Mubasher: KACST and RDI launch a deep-tech startup programme, December 2025.</span> <a href="https://en.sharikatmubasher.com/media-hub/news/21521026/kacst-rdi-launch-new-program-to-strengthen-saudi-arabias-innovation-pipeline?lang=en">sharikatmubasher.com</a></li>
+    <li id="s19"><span class="ar">هيئة الاتصالات والفضاء والتقنية: المواصفة RI085 لأجهزة الموجات فائقة العرض.</span><span class="en">Communications, Space &amp; Technology Commission, specification RI085 for ultra-wideband devices.</span> <a href="https://web.archive.org/web/20250508213731/https://www.cst.gov.sa/ar/RulesandSystems/RegulatoryDocuments/EquipmentApproval/Technical_Specification/RI085_UWB.pdf">web.archive.org</a></li>
+    <li id="s20"><span class="ar">أديب وزملاؤه، معهد MIT: بيوت ذكية تراقب التنفّس ونبض القلب (نظام Vital-Radio)، مؤتمر CHI، 2015.</span><span class="en">Adib et al., MIT, "Smart Homes that Monitor Breathing and Heart Rate" (Vital-Radio), ACM CHI 2015.</span> <a href="https://doi.org/10.1145/2702123.2702200">doi.org</a></li>
+    <li id="s21"><span class="ar">إم آي تي تكنولوجي ريفيو: جهاز Emerald من شركة دينا قطابي، يراقب التنفّس والنبض والنوم داخل البيوت، 2018.</span><span class="en">MIT Technology Review, on Dina Katabi's Emerald device for monitoring breathing, heart rate and sleep at home, 2018.</span> <a href="https://www.technologyreview.com/2018/09/12/140293/dina-katabi-emerald-walls/">technologyreview.com</a></li>
+    <li id="s22"><span class="ar">ناسا: جهاز FINDER يكشف نبض الضحايا تحت الأنقاض، ومتاح للبيع، 2018.</span><span class="en">NASA Spinoff, FINDER radar detects the heartbeats of trapped victims; units available for sale, 2018.</span> <a href="https://spinoff.nasa.gov/node/10982">spinoff.nasa.gov</a></li>
+  </ol>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="links"><a href="index.html"><span class="ar">صفحة المشروع</span><span class="en">Project page</span></a>
+    <a href="../references/index.html"><span class="ar">المراجع العلمية</span><span class="en">Scientific references</span></a></div>
+  <p><span class="ar">نبض · مسابقة سيف 2026 · فيصل أنور بالعبيد</span><span class="en">NABD · SAIF 2026 · Faesal Anwar Balobaed</span></p>
+</div></footer>
+
+<script>
+(function () {
+  var html = document.documentElement, body = document.body;
+  function set(lang) {
+    body.classList.toggle("en", lang === "en");
+    html.lang = lang; html.dir = lang === "en" ? "ltr" : "rtl"; body.dir = html.dir;
+    try { localStorage.setItem("nabd-lang", lang); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("nabd-lang"); } catch (e) {}
+  set(saved === "en" ? "en" : "ar");
+  document.getElementById("lang").addEventListener("click", function () { set(body.classList.contains("en") ? "ar" : "en"); });
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) { els.forEach(function (e) { e.classList.add("in"); }); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
